@@ -19,8 +19,14 @@
 
 #include "inode.h"
 
+/*
+* generer les fichiers pour le hash
+*/
 void generateHash(char* directory, short* tableau, int sizeTab);
 
+/*
+* generer les fichiers pour le nested loop
+*/
 void generateNested(char* directory, short* tableau, int sizeTab);
 
 #endif

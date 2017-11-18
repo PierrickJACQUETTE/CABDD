@@ -19,6 +19,11 @@
 
 #include "inOut.h"
 
+/*
+* effectue un nestedLoop entre R et S et stocke le resultat dans RS
+* maintient les compteurs à jour
+* si le tableau RS est plein ecrit le tableau dans le fichier path
+*/
 int nestedLoop(short R[], short S[], short RS[], int* iterRS, int sizeR, int sizeS, char* path, int* nbWrite);
 
 #endif

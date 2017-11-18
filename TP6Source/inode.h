@@ -19,16 +19,34 @@
 
 #include "inOut.h"
 
+/*
+* concatener les arguments pour former le nom du repertoire
+*/
 char* concateneNameDirectory(char* path, char algo, int number);
 
+/*
+* concatener les arguments pour former le nom du fichier
+*/
 char* concateneNameFile(char* pathDirectory, char algo, char* nameFile, int numberFile);
 
+/*
+* connaitre le numero du dernier fichier dans ce repertoire
+*/
 int lastNumberNameFile(char* path);
 
+/*
+* compter le nombre de fichier dans le repertoire
+*/
 int countFileInDirectory(char* path);
 
+/*
+* savoir si le repertoire existe
+*/
 int directoryIsExist(char* path);
 
+/*
+* creer le repertoire 
+*/
 int createDirectory(char* path);
 
 #endif

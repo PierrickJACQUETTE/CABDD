@@ -19,8 +19,19 @@
 
 #include "config.h"
 
+/*
+* mettre les valeurs dans le tableau avec les valeurs identiques
+*/
 void fillInTab(short *tabI, short *tabR, short *tabS, int init);
+
+/*
+* randomizer le tableau
+*/
 void randomizer(short *tab, int count);
+
+/*
+* affichage du tableau
+*/
 void display(short *tabR, short *tabS);
 
 #endif

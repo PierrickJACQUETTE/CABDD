@@ -25,6 +25,10 @@
 */
 void diskJoin(char* pathR, char* pathS, char* pathRS, char algo, int* nbRead, int* nbWrite);
 
+
+/**
+* do the join between and init count for nested loop
+*/
 void diskJoinNested(char* pathDirectoryOne, char* pathDirectoryTwo, char* pathDirectoryRes);
 
 #endif

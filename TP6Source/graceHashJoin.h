@@ -20,6 +20,10 @@
 #include "inode.h"
 #include "diskJoin.h"
 
+/*
+* effectue un grace hash join sur les deux premiers repertoires et met
+* le resultat dans le troisieme
+*/
 void graceHashJoin(char* directoryOne, char* directoryTwo, char* directoryRes);
 
 #endif

@@ -20,6 +20,9 @@
 #include "graceHashJoin.h"
 #include "tabGenerator.h"
 
+/*
+* fonction de test
+*/
 void test();
 
 #endif
