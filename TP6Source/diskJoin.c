@@ -45,8 +45,8 @@ void diskJoin(char* pathR, char* pathS, char* pathRS, char algo, int* nbRead, in
 	}
 }
 
-void diskJoinNested(char* pathDirectoryOne, char* pathDirectoryTwo){
+void diskJoinNested(char* pathDirectoryOne, char* pathDirectoryTwo, char* pathDirectoryRes){
 	int nbRead = 0, nbWrite = 0;
-	diskJoin(pathDirectoryOne, pathDirectoryTwo, "RS", 'N', &nbRead, &nbWrite);
+	diskJoin(pathDirectoryOne, pathDirectoryTwo, pathDirectoryRes, 'N', &nbRead, &nbWrite);
 	printf("Nested Loop : Read : %d et Write : %d\n", nbRead, nbWrite);
 }

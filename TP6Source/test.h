@@ -14,12 +14,12 @@
 * Remarques : Effectue en binome
 */
 
-#ifndef GRACEHASHJOIN_H_
-#define GRACEHASHJOIN_H_
+#ifndef TEST_H_
+#define TEST_H_
 
-#include "inode.h"
-#include "diskJoin.h"
+#include "graceHashJoin.h"
+#include "tabGenerator.h"
 
-void graceHashJoin(char* directoryOne, char* directoryTwo, char* directoryRes);
+void test();
 
 #endif

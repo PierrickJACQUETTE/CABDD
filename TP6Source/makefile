@@ -8,7 +8,7 @@ all: $(EXEC)
 
 TP6: $(OBJECTS)
 	$(CC) -o $@ $^ $(CFLAGS)
-	mkdir -p RH R SH S RSH RS
+	mkdir -p RH R SH S RSH RS Test/RSH Test/RS
 
 %.o: %.c $(HEADERS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -19,4 +19,4 @@ clean:
 mrproper: clean
 	rm -f $(EXEC)
 	rm -f *.gch
-	rm -fR RH R SH S RSH RS
+	rm -fR RH R SH S RSH RS Test/RSH Test/RS

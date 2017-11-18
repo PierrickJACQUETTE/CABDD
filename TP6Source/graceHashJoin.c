@@ -16,7 +16,7 @@
 
 #include "graceHashJoin.h"
 
-void graceHashJoin(char* directoryOne, char* directoryTwo){
+void graceHashJoin(char* directoryOne, char* directoryTwo, char* directoryRes){
 	int i, nbRead = 0, nbWrite = 0;
 	char* pathDirectoryOne;
 	char* pathDirectoryTwo;
@@ -24,8 +24,9 @@ void graceHashJoin(char* directoryOne, char* directoryTwo){
 		pathDirectoryOne = concateneNameDirectory(directoryOne, 'H', i);
 		pathDirectoryTwo = concateneNameDirectory(directoryTwo, 'H', i);
 		if(directoryIsExist(pathDirectoryOne) > -1 && directoryIsExist(pathDirectoryTwo) > -1){
-			diskJoin(pathDirectoryOne, pathDirectoryTwo, "RSH", 'H', &nbRead, &nbWrite);
+			diskJoin(pathDirectoryOne, pathDirectoryTwo, directoryRes, 'H', &nbRead, &nbWrite);
 		}
 	}
-	printf("Grace Hash : Read : %d et Write : %d\n", nbRead, nbWrite%10+1);
+	nbWrite = (nbWrite<SIZ_M)? nbWrite : nbWrite%SIZ_M+1;
+	printf("Grace Hash : Read : %d et Write : %d\n", nbRead, nbWrite);
 }

@@ -14,11 +14,15 @@
 * Remarques : Effectue en binome
 */
 
+#include "test.h"
 #include "generate.h"
 #include "graceHashJoin.h"
 #include "tabGenerator.h"
 
 int main(int argc, char const *argv[]) {
+
+	test();
+
     int init = (SIZE*2)-COMMON;
     short tabI[init];
     short tabR[SIZE];
@@ -33,8 +37,8 @@ int main(int argc, char const *argv[]) {
     generateNested("R", tabR, SIZE);
     generateNested("S", tabS, SIZE);
 
-    graceHashJoin("R", "S");
-    diskJoinNested("R", "S");
+    graceHashJoin("R", "S", "RSH");
+    diskJoinNested("R", "S", "RS");
 
-    return 0;
+    return EXIT_SUCCESS;
 }

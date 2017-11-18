@@ -25,6 +25,6 @@
 */
 void diskJoin(char* pathR, char* pathS, char* pathRS, char algo, int* nbRead, int* nbWrite);
 
-void diskJoinNested(char* pathDirectoryOne, char* pathDirectoryTwo);
+void diskJoinNested(char* pathDirectoryOne, char* pathDirectoryTwo, char* pathDirectoryRes);
 
 #endif
