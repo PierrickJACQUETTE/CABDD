@@ -33,7 +33,7 @@ void diskJoin(char* pathR, char* pathS, char* pathRS, char algo, int* nbRead, in
 			}else{
 				readS = 1;
 			}
-			nbWrite+= nestedLoop(strR, strS, strRS, &iterRS, nbReadR, nbReadS, path);
+			nestedLoop(strR, strS, strRS, &iterRS, nbReadR, nbReadS, path, nbWrite);
 			j = (i%2 ==0)? j+1 : j-1;
 		}
 		readS = 0;

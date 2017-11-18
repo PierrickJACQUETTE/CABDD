@@ -16,7 +16,7 @@
 
 #include "generate.h"
 
-int hash(char key) {
+int hash(short key) {
 	return key % SIZ_M;
 }
 
@@ -26,7 +26,6 @@ void addInode(char* directory, char algo, int idDirectory, short value){
 		createDirectory(pathDirectory);
 	}
 	usleep(1);
-	printf("%d\n", value);
 	int last = lastNumberNameFile(pathDirectory);
 	if(last == -1){
 		last++;
@@ -40,7 +39,6 @@ void addInode(char* directory, char algo, int idDirectory, short value){
 void generateHash(char* directory, short* tableau, int sizeTab){
 	int i;
 	for(i=0; i<sizeTab; i++){
-		printf("%d\n", i);
 		addInode(directory, 'H', hash(tableau[i]), tableau[i]);
 	}
 }

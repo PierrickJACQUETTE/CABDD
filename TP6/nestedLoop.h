@@ -19,6 +19,6 @@
 
 #include "inOut.h"
 
-int nestedLoop(short R[], short S[], short RS[], int* iterRS, int sizeR, int sizeS, char* path);
+int nestedLoop(short R[], short S[], short RS[], int* iterRS, int sizeR, int sizeS, char* path, int* nbWrite);
 
 #endif
