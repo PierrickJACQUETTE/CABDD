@@ -1,3 +1,19 @@
+/**
+* TP n°: 6
+*
+* Titre du TP : Grace Hash Join
+*
+* Date : 17/11/2017
+*
+* Nom : ELBEZ & JACQUETTE
+* Prenom : Samuel & Pierrick
+*
+* email : samuel.elbe@gmail.com
+* 			jacquette@gmail.com
+*
+* Remarques : Effectue en binome
+*/
+
 #include "generate.h"
 #include "graceHashJoin.h"
 #include "tabGenerator.h"
