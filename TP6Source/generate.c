@@ -46,7 +46,7 @@ void generateHash(char* directory, short* tableau, int sizeTab){
 void generateNested(char* directory, short* tableau, int sizeTab){
 	int i, c = 0;
 	for(i=0; i<sizeTab; i+=SIZ_M){
-		int max = (i+SIZ_M >= sizeTab)? sizeTab-1 : i+SIZ_M;
+		int max = (i+SIZ_M >= sizeTab)? sizeTab : i+SIZ_M;
 		writeTabValue(concateneNameFile(directory, 'N', directory, c), tableau, max, i);
 		c++;
 	}
