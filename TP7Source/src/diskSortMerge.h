@@ -17,9 +17,12 @@
 #ifndef DISKSORTMERGE_H_
 #define DISKSORTMERGE_H_
 
-#include "diskIO.h"
-#include "relation.h"
+#include "sortMerge.h"
 
+/**
+ * Permet d'effectuer les différentes passes
+ * @param path chemin du repertoire avec les fichiers
+ */
 void passe(char* path);
 
 #endif
