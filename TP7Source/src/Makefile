@@ -7,6 +7,7 @@ OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 all: $(EXEC)
 
 main: $(OBJECTS)
+	rm -fR R*
 	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c $(HEADERS)
@@ -18,4 +19,3 @@ clean:
 mrproper: clean
 	rm -f $(EXEC)
 	rm -f *.gch
-	rm -fR R R0
