@@ -20,14 +20,9 @@
 #include "config.h"
 
 /*
-* ecrire une valeur dans le fichier
-*/
-int writeValue(char* path, short* value, int sizeMax);
-
-/*
 * ecrire de min a size valeur dans le fichier
 */
-int writeTabValue(char* path, short* value, int size, int min);
+int writeTabValue(char* path, short* value, int size, int max);
 
 /*
 * lire dans le fichier et stocker les valeurs dans value

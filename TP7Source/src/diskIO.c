@@ -27,27 +27,12 @@ int countLine(FILE * file ){
 	return count;
 }
 
-int writeValue(char* path, short* value, int sizeMax) {
-	FILE* file = NULL;
-	int r = 0, error;
-	file = fopen(path, "a+");
-	if (file != NULL) {
-		if(countLine(file) < sizeMax){
-			error = fprintf(file, "%d\n", *value);
-			ERROR_SYS(error, "fprintf : writeValue : inOut.c");
-			r = 1;
-		}
-		ERROR_EOF(fclose(file), "fclose : writeValue : inOut.c");
-	}
-	return r;
-}
-
-int writeTabValue(char* path, short* value, int size, int min){
+int writeTabValue(char* path, short* value, int size, int max){
 	FILE* file = NULL;
 	int i, error;
 	file = fopen(path, "a+");
 	if (file != NULL) {
-		for(i=min; i< size; i++){
+		for(i=max; i< size; i++){
 			error = fprintf(file, "%d\n", (int)(value[i]));
 			ERROR_SYS(error, "fprintf : writeValue : inOut.c");
 		}

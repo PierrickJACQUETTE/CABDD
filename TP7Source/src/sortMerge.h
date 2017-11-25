@@ -36,6 +36,6 @@
  * @param nameDirectoryNext le nom du prochain dossier
  * @param readR2            le nombre de short dans R2
  */
-void trie(short R1[], short R2[], short R3[], int* iterR3, int passe, int numFileR1, int numFileR2, int* numFileR3, char* path, char* nameDirectory, char* nameDirectoryNext, int readR2);
+void trie(short R1[], short R2[], short R3[], int* iterR3, int passe, int numFileR1, int numFileR2, int* numFileR3, char* path, char* nameDirectory, char* nameDirectoryNext, int readR2, char* nameCheck);
 
 #endif

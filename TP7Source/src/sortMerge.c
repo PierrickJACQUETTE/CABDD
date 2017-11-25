@@ -16,7 +16,7 @@
 
 #include "sortMerge.h"
 
-void trie(short R1[], short R2[], short R3[], int* iterR3, int passe, int numFileR1, int numFileR2, int* numFileR3, char* path, char* nameDirectory, char* nameDirectoryNext, int readR2){
+void trie(short R1[], short R2[], short R3[], int* iterR3, int passe, int numFileR1, int numFileR2, int* numFileR3, char* path, char* nameDirectory, char* nameDirectoryNext, int readR2, char* nameCheck){
 	int iterR1 = 0, iterR2 = 0, i, numFileR1Start = numFileR1, numFileR2Start = numFileR2;
 	for(i = 0; i<(SIZ_M*2*myPow(2, passe-1))-(SIZ_M-readR2); i++){
 		if(iterR1==SIZ_M && iterR2==readR2){
@@ -42,6 +42,7 @@ void trie(short R1[], short R2[], short R3[], int* iterR3, int passe, int numFil
 		}
 		if(*iterR3 == SIZ_M){
 			writeTabValue(concateneNameFile(nameDirectoryNext, path, *numFileR3), R3, *iterR3, 0);
+			writeTabValue(concateneNameFile(nameCheck, "", numFileR1Start-1), R3, *iterR3, 0);
 			*iterR3 = 0;
 			*numFileR3 = *numFileR3 +1;
 		}

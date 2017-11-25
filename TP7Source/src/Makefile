@@ -7,7 +7,7 @@ OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 all: $(EXEC)
 
 main: $(OBJECTS)
-	rm -fR R*
+	rm -fR R* Check*
 	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c $(HEADERS)

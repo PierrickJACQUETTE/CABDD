@@ -22,7 +22,8 @@
 /**
  * Permet d'effectuer les différentes passes
  * @param path chemin du repertoire avec les fichiers
+ * @param path chemin du repertoire pour les fichiers contenant les run
  */
-void passe(char* path);
+void passe(char* path, char* pathVerif);
 
 #endif
