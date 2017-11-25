@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -14,20 +14,20 @@
 * Remarques : Effectue en binome
 */
 
-#include "inode.h"
+#include "relation.h"
 
-char* concateneNameDirectory(char* path, char algo, int number){
+char* concateneNameDirectory(char* path, int number){
 	char *str = malloc(sizeof(char)*20);
 	ERROR_NULLCHAR(str, "malloc : concateneNameDirectory : inode.c");
-	int error = sprintf(str, "%s%c/%s%d", path, algo, path, number);
+	int error = sprintf(str, "%s%d", path, number);
 	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectory : inode.c");
 	return str;
 }
 
-char* concateneNameFile(char* pathDirectory, char algo, char* nameFile, int numberFile){
+char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	char *str = malloc(sizeof(char)*20);
 	ERROR_NULLCHAR(str, "malloc : concateneNameFile : inode.c");
-	int error = sprintf(str, "%s/%s%c%d.txt", pathDirectory, nameFile, algo, numberFile);
+	int error = sprintf(str, "%s/%s%d.txt", pathDirectory, nameFile, numberFile);
 	ERROR_SYSCHAR(error , "sprintf : concateneNameFile : inode.c");
 	return str;
 }

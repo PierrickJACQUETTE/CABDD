@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -14,7 +14,7 @@
 * Remarques : Effectue en binome
 */
 
-#include "inOut.h"
+#include "diskIO.h"
 
 int countLine(FILE * file ){
 	int ch;

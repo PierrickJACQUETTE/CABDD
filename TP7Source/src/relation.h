@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -14,20 +14,20 @@
 * Remarques : Effectue en binome
 */
 
-#ifndef INODE_H
-#define INODE_H_
+#ifndef RELATION_H
+#define RELATION_H_
 
-#include "inOut.h"
+#include "config.h"
 
 /*
 * concatener les arguments pour former le nom du repertoire
 */
-char* concateneNameDirectory(char* path, char algo, int number);
+char* concateneNameDirectory(char* path, int number);
 
 /*
 * concatener les arguments pour former le nom du fichier
 */
-char* concateneNameFile(char* pathDirectory, char algo, char* nameFile, int numberFile);
+char* concateneNameFile(char* pathDirectory, char* nameFile, int numberFile);
 
 /*
 * connaitre le numero du dernier fichier dans ce repertoire
@@ -45,7 +45,7 @@ int countFileInDirectory(char* path);
 int directoryIsExist(char* path);
 
 /*
-* creer le repertoire 
+* creer le repertoire
 */
 int createDirectory(char* path);
 

@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -18,11 +18,6 @@
 #define TABGENERATOR_H_
 
 #include "config.h"
-
-/*
-* mettre les valeurs dans le tableau avec les valeurs identiques
-*/
-void fillInTab(short *tabI, short *tabR, short *tabS, int init);
 
 /*
 * randomizer le tableau

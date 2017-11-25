@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -16,23 +16,8 @@
 
 #include "tabGenerator.h"
 
-void fillInTab(short *tabI, short *tabR, short *tabS, int init){
-    int i;
-    for(i = 0; i < (SIZE-COMMON); i++){
-        tabR[i] = tabI[i];
-    }
-
-    for(i = (SIZE-COMMON); i < SIZE; i++){
-        tabR[i] = tabI[i];
-        tabS[i] = tabI[i];
-    }
-
-    for(i = SIZE; i < init; i++){
-        tabS[i-SIZE] = tabI[i];
-    }
-}
-
 void randomizer(short *tab, int count){
+	srand(time(NULL));
     int x, i = 0;
     while(i < count){
         int r = rand()%MAX_SHT;

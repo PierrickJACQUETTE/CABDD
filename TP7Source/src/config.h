@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -19,8 +19,7 @@
 
 #define SIZ_M 10
 #define MAX_SHT 32767
-#define SIZE 256
-#define COMMON 32
+#define SIZE 96
 
 #include <stdio.h>
 #include <stdlib.h>

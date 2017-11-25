@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -14,8 +14,8 @@
 * Remarques : Effectue en binome
 */
 
-#ifndef INOUT_H_
-#define INOUT_H_
+#ifndef DISKIO_H_
+#define DISKIO_H_
 
 #include "config.h"
 

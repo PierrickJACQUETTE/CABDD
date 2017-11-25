@@ -1,9 +1,9 @@
 /**
-* TP n°: 6
+* TP n°: 7
 *
-* Titre du TP : Grace Hash Join
+* Titre du TP : Disk Merge Join
 *
-* Date : 17/11/2017
+* Date : 24/11/2017
 *
 * Nom : ELBEZ & JACQUETTE
 * Prenom : Samuel & Pierrick
@@ -17,16 +17,12 @@
 #ifndef GENERATE_H_
 #define GENERATE_H_
 
-#include "inode.h"
-
-/*
-* generer les fichiers pour le hash
-*/
-void generateHash(char* directory, short* tableau, int sizeTab);
+#include "relation.h"
+#include "diskIO.h"
 
 /*
 * generer les fichiers pour le nested loop
 */
-void generateNested(char* directory, short* tableau, int sizeTab);
+void generate(char* directory, short* tableau, int sizeTab);
 
 #endif
