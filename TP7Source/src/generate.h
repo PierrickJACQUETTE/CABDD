@@ -20,9 +20,12 @@
 #include "relation.h"
 #include "diskIO.h"
 
-/*
+/**
 * generer les fichiers pour le nested loop
-*/
+ * @param directory chemin du repertoire
+ * @param tableau   adresse du tableau a genere
+ * @param sizeTab   taille du tableau en argument
+ */
 void generate(char* directory, short* tableau, int sizeTab);
 
 #endif

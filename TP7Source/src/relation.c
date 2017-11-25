@@ -56,10 +56,6 @@ int countFileInDirectory(char* path){
 	return lastNumberNameFile(path)+1;
 }
 
-int directoryIsExist(char* path){
-	return access(path, 0);
-}
-
 int createDirectory(char* path){
 	return mkdir(path, 0777);
 }

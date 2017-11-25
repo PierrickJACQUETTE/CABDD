@@ -31,15 +31,3 @@ void randomizer(short *tab, int count){
 		}
 	}
 }
-
-void display(short *tabR, short *tabS){
-	int i;
-	for(i = 0; i < SIZE; i++){
-		int j;
-		for (j = 0; j < SIZE; j++) {
-			if(tabR[i] == tabS[j]){
-				printf("%d\n", tabR[i]);
-			}
-		}
-	}
-}

@@ -19,14 +19,11 @@
 
 #include "config.h"
 
-/*
-* randomizer le tableau
-*/
+/**
+ * [randomizer le tableau
+ * @param tab   adresse du tableau ou faire le random
+ * @param count nombre d element dans le tableau
+ */
 void randomizer(short *tab, int count);
-
-/*
-* affichage du tableau
-*/
-void display(short *tabR, short *tabS);
 
 #endif
