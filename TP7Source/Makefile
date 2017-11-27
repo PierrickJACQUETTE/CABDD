@@ -19,6 +19,7 @@ OBJECTS_TEST = $(patsubst $(SRC_TEST)/%.c, $(SRC_TEST)/%.o, $(wildcard $(SRC_TES
 all: $(EXEC)
 
 main: $(OBJECTS)
+	mkdir -p demo
 	rm -fR $(DEMO_DIR)/R* $(DEMO_DIR)/Check*
 	$(CC) -o $@ $^ $(CFLAGS)
 
@@ -46,7 +47,7 @@ run:
 	./main
 
 rmDemo:
-	rm -fR $(DEMO_DIR)/*
+	rm -fR $(DEMO_DIR)
 
 clean:
 	rm -f $(SRC_DIR)/*.o
