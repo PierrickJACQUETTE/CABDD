@@ -18,5 +18,10 @@
 
 int main(int argc, char const *argv[]) {
 
+	printf("2² = %d\n", myPow(2,2));
+	printf("2³ = %d\n", myPow(2,3));
+	printf("(-1)² = %d\n", myPow(-1,2));
+	printf("(-1)³ = %d\n", myPow(-1,3));
+	
 	return EXIT_SUCCESS;
 }
