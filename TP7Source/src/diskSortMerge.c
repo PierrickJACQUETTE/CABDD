@@ -9,7 +9,7 @@
 * Prenom : Samuel & Pierrick
 *
 * email : samuel.elbe@gmail.com
-* 			jacquette@gmail.com
+*  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en binome
 */
@@ -21,7 +21,7 @@ void passe0(char* path, char* pathVerif){
 	short tabT[SIZ_M];
 	char* nameDirectoryNext = concateneNameDirectory(path, 0);
 	createDirectory(nameDirectoryNext);
-	char* nameCheck = concateneNameFile(pathVerif, "", 0);
+	char* nameCheck = concateneNameDirectoryDirectory(pathVerif, 0);
 	createDirectory (nameCheck);
 	int f = countFileInDirectory(path);
 	for(i = 0; i < f; i++){
@@ -42,7 +42,7 @@ void passeN(char* path, int passe, char* pathVerif){
 	nameDirectoryNext = concateneNameDirectory(path, passe);
 	createDirectory(nameDirectoryNext);
 	nameDirectory = concateneNameDirectory(path, passe-1);
-	char* nameCheck = concateneNameFile(pathVerif, "", passe);
+	char* nameCheck = concateneNameDirectoryDirectory(pathVerif, passe);
 	createDirectory (nameCheck);
 	int f = countFileInDirectory(nameDirectory);
 	i=0;
