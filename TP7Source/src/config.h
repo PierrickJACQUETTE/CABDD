@@ -19,7 +19,8 @@
 
 #define SIZ_M 10
 #define MAX_SHT 32767
-#define SIZE 96
+
+int SIZE;
 
 #include <stdio.h>
 #include <stdlib.h>

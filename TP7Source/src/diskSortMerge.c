@@ -71,8 +71,8 @@ void passeN(char* path, int passe, char* pathVerif){
 
 void nPasse(char* path, char* pathVerif){
 	int i;
-	int nbPasse = (SIZE/10+1)/2;
-	for(i=1; i < nbPasse; i++){
+	int nbPasse = (SIZE/SIZ_M)/2;
+	for(i=1; i < nbPasse+1; i++){
 		passeN(path, i, pathVerif);
 	}
 }

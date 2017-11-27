@@ -33,6 +33,7 @@ relation: main
 	$(CC) -o $(TEST_RELATION)/$@ $(TEST_RELATION)/main.c $(SRC_DIR)/relation.o
 
 diskSortMerge: main
+	rm -fR $(DEMO_DIR)/Test0 $(DEMO_DIR)/Test1 $(DEMO_DIR)/CheckTest*
 	$(CC) -o $(TEST_DISKSORTMERGE)/$@ $(TEST_DISKSORTMERGE)/main.c $(SRC_DIR)/diskSortMerge.o $(SRC_DIR)/sortMerge.o $(SRC_DIR)/relation.o $(SRC_DIR)/diskIO.o $(SRC_DIR)/outil.o
 
 generate: main
@@ -45,9 +46,6 @@ runTest: diskIO relation diskSortMerge generate outil
 
 run:
 	./main
-
-rmDemo:
-	rm -fR $(DEMO_DIR)
 
 clean:
 	rm -f $(SRC_DIR)/*.o

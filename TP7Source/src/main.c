@@ -19,6 +19,7 @@
 #include "diskSortMerge.h"
 
 int main(int argc, char const *argv[]) {
+	SIZE = 96;
 	char* path = "R";
 	char* pathVerif = "Check";
 	short tabI[SIZE];
