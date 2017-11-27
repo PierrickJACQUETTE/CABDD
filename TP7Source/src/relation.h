@@ -9,7 +9,7 @@
 * Prenom : Samuel & Pierrick
 *
 * email : samuel.elbe@gmail.com
-* 			jacquette@gmail.com
+*  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en binome
 */
@@ -28,6 +28,14 @@
 char* concateneNameDirectory(char* path, int number);
 
 /**
+* concatener les arguments pour former le nom du repertoire
+* @param  pathParent    chemin du dossier parent
+* @param  path			chemin du dossier courant
+* @return        		le resultat de la concatenation
+*/
+char* concateneNameDirectoryDirectory(char* pathParent, int path);
+
+/**
 * concatener les arguments pour former le nom du fichier
 * @param  pathDirectory   chemin du dossier
 * @param  nameFile      name de ce fichier
@@ -36,6 +44,13 @@ char* concateneNameDirectory(char* path, int number);
 */
 char* concateneNameFile(char* pathDirectory, char* nameFile, int numberFile);
 
+/**
+* concatener les arguments pour former le nom du fichier
+* @param  pathDirectory   chemin du dossier
+* @param  nameFile      chemin du sous dossier
+* @return        le resultat de la concatenation
+*/
+char* concateneChar(char* pathDirectory,  char* path);
 /**
 * connaitre le numero du dernier fichier dans ce repertoire
 * @param  path chemin du dossier

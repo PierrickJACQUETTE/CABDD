@@ -9,28 +9,18 @@
 * Prenom : Samuel & Pierrick
 *
 * email : samuel.elbe@gmail.com
-* 			jacquette@gmail.com
+*  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en binome
 */
 
 #include "diskIO.h"
 
-int countLine(FILE * file ){
-	int ch;
-	int count = 0;
-	while ((ch = fgetc(file)) != EOF) {
-		if (ch == '\n') {
-			count++;
-		}
-	}
-	return count;
-}
-
 int writeTabValue(char* path, short* value, int size, int max){
 	FILE* file = NULL;
 	int i, error;
-	file = fopen(path, "a+");
+	char* p = concateneChar("demo", path);
+	file = fopen(p, "a+");
 	if (file != NULL) {
 		for(i=max; i< size; i++){
 			error = fprintf(file, "%d\n", (int)(value[i]));
@@ -44,7 +34,8 @@ int writeTabValue(char* path, short* value, int size, int max){
 int readTabValue(char* path, short value[]){
 	int i =0;
 	FILE* file = NULL;
-	file = fopen(path, "r");
+	char* p = concateneChar("demo", path);
+	file = fopen(p, "r");
 	if (file != NULL) {
 		char * line = NULL;
 		size_t len = 0;

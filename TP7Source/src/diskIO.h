@@ -9,7 +9,7 @@
 * Prenom : Samuel & Pierrick
 *
 * email : samuel.elbe@gmail.com
-* 			jacquette@gmail.com
+*  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en binome
 */
@@ -18,6 +18,7 @@
 #define DISKIO_H_
 
 #include "config.h"
+#include "relation.h"
 
 /**
 * ecrire de min a size valeur dans le fichier

@@ -9,7 +9,7 @@
 * Prenom : Samuel & Pierrick
 *
 * email : samuel.elbe@gmail.com
-* 			jacquette@gmail.com
+*  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en binome
 */
@@ -24,6 +24,14 @@ char* concateneNameDirectory(char* path, int number){
 	return str;
 }
 
+char* concateneNameDirectoryDirectory(char* pathParent, int path){
+	char *str = malloc(sizeof(char)*20);
+	ERROR_NULLCHAR(str, "malloc : concateneNameDirectoryDirectory : inode.c");
+	int error = sprintf(str, "%s/%d", pathParent, path);
+	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectoryDirectory : inode.c");
+	return str;
+}
+
 char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	char *str = malloc(sizeof(char)*20);
 	ERROR_NULLCHAR(str, "malloc : concateneNameFile : inode.c");
@@ -32,7 +40,16 @@ char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	return str;
 }
 
+char* concateneChar(char* pathDirectory,  char* path){
+	char *str = malloc(sizeof(char)*20);
+	ERROR_NULLCHAR(str, "malloc : concateneChar : inode.c");
+	int error = sprintf(str, "%s/%s", pathDirectory, path);
+	ERROR_SYSCHAR(error , "sprintf : concateneChar : inode.c");
+	return str;
+}
+
 int lastNumberNameFile(char* path){
+	path = concateneChar("demo", path);
 	int file_count = 0;
 	DIR * dirp;
 	struct dirent * entry;
@@ -57,5 +74,6 @@ int countFileInDirectory(char* path){
 }
 
 int createDirectory(char* path){
+	path = concateneChar("demo", path);
 	return mkdir(path, 0777);
 }
