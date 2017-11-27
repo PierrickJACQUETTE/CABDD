@@ -18,33 +18,33 @@
 
 char* concateneNameDirectory(char* path, int number){
 	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneNameDirectory : inode.c");
+	ERROR_NULLCHAR(str, "malloc : concateneNameDirectory : relation.c");
 	int error = sprintf(str, "%s%d", path, number);
-	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectory : inode.c");
+	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectory : relation.c");
 	return str;
 }
 
 char* concateneNameDirectoryDirectory(char* pathParent, int path){
 	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneNameDirectoryDirectory : inode.c");
+	ERROR_NULLCHAR(str, "malloc : concateneNameDirectoryDirectory : relation.c");
 	int error = sprintf(str, "%s/%d", pathParent, path);
-	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectoryDirectory : inode.c");
+	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectoryDirectory : relation.c");
 	return str;
 }
 
 char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneNameFile : inode.c");
+	ERROR_NULLCHAR(str, "malloc : concateneNameFile : relation.c");
 	int error = sprintf(str, "%s/%s%d.txt", pathDirectory, nameFile, numberFile);
-	ERROR_SYSCHAR(error , "sprintf : concateneNameFile : inode.c");
+	ERROR_SYSCHAR(error , "sprintf : concateneNameFile : relation.c");
 	return str;
 }
 
 char* concateneChar(char* pathDirectory,  char* path){
 	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneChar : inode.c");
+	ERROR_NULLCHAR(str, "malloc : concateneChar : relation.c");
 	int error = sprintf(str, "%s/%s", pathDirectory, path);
-	ERROR_SYSCHAR(error , "sprintf : concateneChar : inode.c");
+	ERROR_SYSCHAR(error , "sprintf : concateneChar : relation.c");
 	return str;
 }
 
@@ -58,14 +58,14 @@ int lastNumberNameFile(char* path){
 	while(dirp == NULL){
 		dirp = opendir(path);
 	}
-	ERROR_NULL(dirp, "opendir : lastNumberNameFile : inode.c");
+	ERROR_NULL(dirp, "opendir : lastNumberNameFile : relation.c");
 	while ((entry = readdir(dirp)) != NULL) {
 		if (entry->d_type == DT_REG) { /* If the entry is a regular file */
 			file_count++;
 		}
 	}
 	int error = closedir(dirp);
-	ERROR_SYS(error, "closedir : lastNumberNameFile : inode.c");
+	ERROR_SYS(error, "closedir : lastNumberNameFile : relation.c");
 	return file_count-1;
 }
 

@@ -24,9 +24,9 @@ int writeTabValue(char* path, short* value, int size, int max){
 	if (file != NULL) {
 		for(i=max; i< size; i++){
 			error = fprintf(file, "%d\n", (int)(value[i]));
-			ERROR_SYS(error, "fprintf : writeValue : inOut.c");
+			ERROR_SYS(error, "fprintf : writeValue : diskIO.c");
 		}
-		ERROR_EOF(fclose(file), "fclose : writeValue : inOut.c");
+		ERROR_EOF(fclose(file), "fclose : writeValue : diskIO.c");
 	}
 	return EXIT_SUCCESS;
 }
@@ -44,7 +44,7 @@ int readTabValue(char* path, short value[]){
 			value[i] = t;
 			i++;
 		}
-		ERROR_EOF(fclose(file), "fclose : readShort : inOut.c");
+		ERROR_EOF(fclose(file), "fclose : readShort : diskIO.c");
 	}
 	return i;
 }
