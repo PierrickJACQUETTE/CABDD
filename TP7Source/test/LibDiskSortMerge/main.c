@@ -5,13 +5,15 @@
 *
 * Date : 24/11/2017
 *
-* Nom : ELBEZ & JACQUETTE
-* Prenom : Samuel & Pierrick
+* Nom : BESSA & ELBEZ & JACQUETTE
+* Prenom : Alexandre & Samuel & Pierrick
 *
-* email : samuel.elbe@gmail.com
+* email :
+   alexandrebessa26@gmail.com
+   samuel.elbe@gmail.com
 *  pierrick.jacquette@gmail.com
 *
-* Remarques : Effectue en binome
+* Remarques : Effectue en trinome
 */
 
 #include "../../src/diskSortMerge.h"
