@@ -1,0 +1,83 @@
+.TH B TREE 1
+.SH NAME
+B TREE \- Methode d'acces a une base donnees en arbre
+.SH SYNOPSIS
+.B #include "LibBT.h"
+
+.SH DESCRIPTION
+Btree est une structure d'arbre triee, equilibree, stocke par association de couple de cle et valeur.
+.br
+
+.br
+Le Btree a la structure suivante qui est definit dans "LibBt.h" :
+.br
+typedef struct {
+.br
+	int isLeaf;
+.br
+	short value1, value2;
+.br
+	short *t1, *t2, *t3;
+.br
+	struct Node *left, *right;
+.br
+	struct Node *father;
+.br
+	short level, indic;
+.br
+} Node;
+.br
+
+.br
+Les elemnets de la structure sont :
+.br
+.I isLeaf
+.RS 3
+entier pour savoir si le noeud est une feuille ou un noeud interne
+.RE 
+.br
+.I value1
+.RS 3
+short representant le case 1 d'un noeud
+.RE
+.I value2
+.RS 3
+short representant le case 2 d'un noeud
+.RE
+.I t1
+.RS 3
+short* representant le pointeur 1 d'une feuille
+.RE
+.I t2
+.RS 3
+short* representant le pointeur 2 d'une feuille
+.RE
+.I t3
+.RS 3
+short* representant le pointeur 3 d'une feuille
+.RE
+.I left
+.RS 3
+Node* representant le pointeur 1 d'un noeud interne
+.RE
+.I right
+.RS 3
+Node* representant le pointeur 2 d'un noeud interne
+.RE
+.I father
+.RS 3
+Node* representant le pointeur vers son pere
+.RE
+.I level
+.RS 3
+short representant le niveau du noeud 0 pour les feuilles, 1 pour le pere des feuilles, et ainsi de suite...
+.RE
+.I indice
+.RS 3
+short representant le numero du noeud pour ce niveau
+.RE
+.SH "SEE ALSO"
+.BR create(1)
+.BR insertBulkData(1)
+.BR loadInMemory(1)
+.BR storeToDisk(1)

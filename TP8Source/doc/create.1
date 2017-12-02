@@ -1,0 +1,23 @@
+.TH B TREE CREATE 1
+.SH NAME
+B TREE CREATE \- Methode de creation d'un arbre
+.SH SYNOPSIS
+.B #include "LibBT.h"
+.br
+
+.br
+.B Node* create(char *name);
+.br
+.SH DESCRIPTION
+Btree est une structure d'arbre triee, equilibree, stocke par association de couple de cle et valeur.
+.br
+
+La fonction create() permet d'initialiser un pointeur sur la racine et d'ajouter tous les elements contenus dans le dossier name au feuille
+
+.SH RETURN VALUE
+La fonction renvoie NULL si il y a eu un probleme.
+.SH "SEE ALSO"
+.BR insertBulkData(1)
+.BR loadInMemory(1)
+.BR storeToDisk(1)
+.BR bt(1)

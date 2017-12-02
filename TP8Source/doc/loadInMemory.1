@@ -1,0 +1,21 @@
+.TH B TREE LOAD 1
+.SH NAME
+B TREE LOAD \- Methode de chargement en memoire un arbre stocke sur disque
+.SH SYNOPSIS
+.B #include "LibBT.h"
+.br
+
+.br
+.B void loadInMemory(Node *rac, char* name);
+.br
+.SH DESCRIPTION
+Btree est une structure d'arbre triee, equilibree, stocke par association de couple de cle et valeur.
+.br
+
+La fonction loadInMemory() permet de charger en memoire un arbre qui est stocke sur disque. L'arbre cree sera stockee dans rac et l'arbre est chercher dans le dossier name.
+
+.SH "SEE ALSO"
+.BR create(1)
+.BR insertBulkData(1)
+.BR storeToDisk(1)
+.BR bt(1)

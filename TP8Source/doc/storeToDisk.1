@@ -1,0 +1,20 @@
+.TH B TREE STORE 1
+.SH NAME
+B TREE STORE \- Methode de stockage d'un arbre sur disque
+.SH SYNOPSIS
+.B #include "LibBT.h"
+.br
+
+.br
+void storeToDisk(Node *rac, char* name);
+.br
+.SH DESCRIPTION
+Btree est une structure d'arbre triee, equilibree, stocke par association de couple de cle et valeur.
+.br
+
+La fonction storeToDisk() permet de stockee l'arbre rac sur disque dans le dossier name.
+.SH "SEE ALSO"
+.BR create(1)
+.BR insertBulkData(1)
+.BR loadInMemory(1)
+.BR bt(1)
