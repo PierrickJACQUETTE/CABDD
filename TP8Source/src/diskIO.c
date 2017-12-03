@@ -21,8 +21,7 @@
 int writeTabValue(char* path, short* value, int size, int max){
 	FILE* file = NULL;
 	int i, error;
-	char* p = concateneChar("demo", path);
-	file = fopen(p, "a+");
+	file = fopen(path, "a+");
 	if (file != NULL) {
 		for(i=max; i< size; i++){
 			error = fprintf(file, "%d\n", (int)(value[i]));
@@ -36,8 +35,7 @@ int writeTabValue(char* path, short* value, int size, int max){
 int readTabValue(char* path, short value[]){
 	int i =0;
 	FILE* file = NULL;
-	char* p = concateneChar("demo", path);
-	file = fopen(p, "r");
+	file = fopen(path, "r");
 	if (file != NULL) {
 		char * line = NULL;
 		size_t len = 0;
@@ -47,6 +45,20 @@ int readTabValue(char* path, short value[]){
 			i++;
 		}
 		ERROR_EOF(fclose(file), "fclose : readShort : diskIO.c");
+	}
+	return i;
+}
+
+int readFirst(char* path, short value){
+	int i =0;
+	FILE* file = NULL;
+	file = fopen(path, "r");
+	if (file != NULL) {
+		char * line = NULL;
+		size_t len = 0;
+		getline(&line, &len, file);
+		value = atoi(line);
+		ERROR_EOF(fclose(file), "fclose : readFirst : diskIO.c");
 	}
 	return i;
 }

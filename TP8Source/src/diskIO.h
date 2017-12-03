@@ -40,6 +40,6 @@ int writeTabValue(char* path, short* value, int size, int max);
  */
 int readTabValue(char* path, short* value);
 
-
+int readFirst(char *path, short value);
 
 #endif
