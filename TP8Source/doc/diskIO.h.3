@@ -1,0 +1,83 @@
+.TH "diskIO.h" 3 "Lundi 4 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+diskIO.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'config\&.h'\fP
+.br
+\fC#include 'relation\&.h'\fP
+.br
+
+.SS "Fonctions"
+
+.in +1c
+.ti -1c
+.RI "int \fBwriteTabValue\fP (char *path, short *value, int size, int max)"
+.br
+.ti -1c
+.RI "int \fBreadTabValue\fP (char *path, short *value)"
+.br
+.ti -1c
+.RI "int \fBreadFirst\fP (char *path, short *value)"
+.br
+.in -1c
+.SH "Documentation des fonctions"
+.PP 
+.SS "int readFirst (char * path, short * value)"
+lire dans le fichier et stocker la premiere valeure 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIpath\fP chemin du fichier 
+.br
+\fIvalue\fP la ou il faut ecrire la valeur 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+nombre de short lu 
+.RE
+.PP
+
+.SS "int readTabValue (char * path, short * value)"
+lire dans le fichier et stocker les valeurs dans value 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIpath\fP chemin du fichier 
+.br
+\fIvalue\fP tableau de ce qu'il faut ecrire 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+nombre de short lu 
+.RE
+.PP
+
+.SS "int writeTabValue (char * path, short * value, int size, int max)"
+ecrire de min a size valeur dans le fichier 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIpath\fP chemin du fichier 
+.br
+\fIvalue\fP tableau de ce qu'il faut ecrire 
+.br
+\fIsize\fP tableau du tableau 
+.br
+\fImax\fP indice 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+nombre de short ecrit 
+.RE
+.PP
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour CavBDM2 - BDD à partir du code source\&.

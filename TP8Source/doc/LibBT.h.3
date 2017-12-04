@@ -1,0 +1,106 @@
+.TH "LibBT.h" 3 "Lundi 4 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LibBT.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'config\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBNode\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLIBBT_H_\fP"
+.br
+.in -1c
+.SS "Fonctions"
+
+.in +1c
+.ti -1c
+.RI "\fBNode\fP * \fBcreate\fP (int opt, char *name)"
+.br
+.ti -1c
+.RI "int \fBinsertBulkData\fP (int opt, short i, \fBNode\fP *rac, char *file)"
+.br
+.ti -1c
+.RI "void \fBloadInMemory\fP (\fBNode\fP *rac, char *name)"
+.br
+.ti -1c
+.RI "void \fBstoreToDisk\fP (\fBNode\fP *rac, char *name)"
+.br
+.in -1c
+.SH "Documentation des macros"
+.PP 
+.SS "#define LIBBT_H_"
+
+.SH "Documentation des fonctions"
+.PP 
+.SS "\fBNode\fP* create (int opt, char * name)"
+creer un arbre 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIopt\fP savoir si l'on veux que l'arbre soit en memoire ou en disque(1) 
+.br
+\fIname\fP nom du repertoire ou est stocke les fichiers S triee 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+l'arbre cree avec tout les fichiers de S 
+.RE
+.PP
+
+.SS "int insertBulkData (int opt, short i, \fBNode\fP * rac, char * file)"
+permet d'inserrer dans l'arbre le noeud contenu dans le file 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIopt\fP savoir si l'on veux que l'arbre soit en memoire ou en disque(1) 
+.br
+\fIi\fP nom du fichier que l'on veux inserer 
+.br
+\fIrac\fP \fBNode\fP represantant la racine de l'arbre dans lequel inserer le nouveau noeud 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+-1 si erreur sinon 0 
+.RE
+.PP
+
+.SS "void loadInMemory (\fBNode\fP * rac, char * name)"
+permet de charger en memoire un arbre stocker dans le repertoire name 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIrac\fP arbre dans lequel stockee les noeuds 
+.br
+\fIname\fP nom du dossier 
+.RE
+.PP
+
+.SS "void storeToDisk (\fBNode\fP * rac, char * name)"
+permet de stocker en disque un arbre 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIrac\fP arbre a stocker 
+.br
+\fIname\fP dossier dans lequel stockee l'arbre 
+.RE
+.PP
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour CavBDM2 - BDD à partir du code source\&.
