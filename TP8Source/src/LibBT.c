@@ -1,4 +1,4 @@
-/**
+/*
 * TP n°: 8
 *
 * Titre du TP : Bulk B Tree
@@ -66,7 +66,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 		short tab[SIZ_M];
 		if(opt){
 			tab[0] = 0;
-			if(readFirst(file, tab[0]) == 0){
+			if(readFirst(file, &(tab[0])) == 0){
 				return -1;
 			}
 		} else {
@@ -146,7 +146,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 				short tab[SIZ_M];
 				if(opt){
 					tab[0] = 0;
-					if(readFirst(file, tab[0]) == 0){
+					if(readFirst(file, &(tab[0])) == 0){
 						return -1;
 					}
 				} else {
@@ -191,7 +191,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 					short tab[SIZ_M];
 					if(opt){
 						tab[0] = 0;
-						if(readFirst(file, tab[0]) == 0){
+						if(readFirst(file, &(tab[0])) == 0){
 							return -1;
 						}
 					} else {

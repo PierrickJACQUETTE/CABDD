@@ -1,4 +1,4 @@
-/**
+/*
 * TP n°: 8
 *
 * Titre du TP : Bulk B Tree
@@ -40,6 +40,12 @@ int writeTabValue(char* path, short* value, int size, int max);
 */
 int readTabValue(char* path, short* value);
 
-int readFirst(char *path, short value);
+/**
+* lire dans le fichier et stocker la premiere valeure
+* @param  path  chemin du fichier
+* @param  value la ou il faut ecrire la valeur
+* @return        nombre de short lu
+*/
+int readFirst(char *path, short* value);
 
 #endif
