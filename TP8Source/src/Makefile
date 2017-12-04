@@ -1,12 +1,12 @@
 CC = gcc
-CFLAGS = -Wall -m32 -pthread -lrt
-EXEC = LibBT
+CFLAGS = -Wall
+EXEC  = TP8
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 
 all: $(EXEC)
 
-LibBT: $(OBJECTS)
+TP8: $(OBJECTS)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c $(HEADERS)
