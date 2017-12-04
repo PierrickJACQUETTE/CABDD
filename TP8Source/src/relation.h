@@ -1,16 +1,16 @@
 /**
-* TP n°: 7
+* TP n°: 8
 *
-* Titre du TP : Disk Merge Join
+* Titre du TP : Bulk B Tree
 *
-* Date : 24/11/2017
+* Date : 01/12/2017
 *
 * Nom : BESSA & ELBEZ & JACQUETTE
 * Prenom : Alexandre & Samuel & Pierrick
 *
 * email :
-   alexandrebessa26@gmail.com
-   samuel.elbe@gmail.com
+alexandrebessa26@gmail.com
+samuel.elbe@gmail.com
 *  pierrick.jacquette@gmail.com
 *
 * Remarques : Effectue en trinome
