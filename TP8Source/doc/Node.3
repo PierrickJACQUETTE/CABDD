@@ -30,6 +30,15 @@ Node \-
 .RI "short * \fBt3\fP"
 .br
 .ti -1c
+.RI "short \fBs1\fP"
+.br
+.ti -1c
+.RI "short \fBs2\fP"
+.br
+.ti -1c
+.RI "short \fBs3\fP"
+.br
+.ti -1c
 .RI "struct \fBNode\fP * \fBleft\fP"
 .br
 .ti -1c
@@ -51,11 +60,11 @@ Node \-
 .SH "Documentation des données membres"
 .PP 
 .SS "struct \fBNode\fP* Node::father"
-
+null à la racine 
 .SS "short Node::indic"
-
+level_indice 
 .SS "int Node::isLeaf"
-
+savoir si cest une feuille 
 .SS "struct \fBNode\fP* Node::left"
 
 .SS "short Node::level"
@@ -63,17 +72,23 @@ Node \-
 .SS "struct \fBNode\fP * Node::middle"
 
 .SS "struct \fBNode\fP * Node::right"
+only for node 
+.SS "short Node::s1"
 
+.SS "short Node::s2"
+
+.SS "short Node::s3"
+for disk 
 .SS "short* Node::t1"
 
 .SS "short * Node::t2"
 
 .SS "short * Node::t3"
-
+only for leaf 
 .SS "short Node::value1"
 
 .SS "short Node::value2"
-
+cases 
 
 .SH "Auteur"
 .PP 
