@@ -45,7 +45,7 @@ Node* create(int opt, char *name);
 * @param rac	 Node represantant la racine de l'arbre dans lequel inserer le nouveau noeud
 * @return        -1 si erreur sinon 0
 */
-int insertBulkData(int opt, short i, Node *rac, char* file);
+int insertBulkData(int opt, short* i, Node *rac, char* file);
 
 /**
 * permet de charger en memoire un arbre stocker dans le repertoire name

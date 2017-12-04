@@ -51,7 +51,6 @@ char* concateneChar(char* pathDirectory,  char* path){
 }
 
 int lastNumberNameFile(char* path){
-	path = concateneChar("demo", path);
 	int file_count = 0;
 	DIR * dirp;
 	struct dirent * entry;
@@ -76,6 +75,5 @@ int countFileInDirectory(char* path){
 }
 
 int createDirectory(char* path){
-	path = concateneChar("demo", path);
 	return mkdir(path, 0777);
 }

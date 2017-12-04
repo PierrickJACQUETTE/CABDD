@@ -49,7 +49,7 @@ int readTabValue(char* path, short value[]){
 	return i;
 }
 
-int readFirst(char* path, short* value){
+int readFirst(char* path, short value[]){
 	int i =0;
 	FILE* file = NULL;
 	file = fopen(path, "r");
@@ -57,7 +57,8 @@ int readFirst(char* path, short* value){
 		char * line = NULL;
 		size_t len = 0;
 		getline(&line, &len, file);
-		*value = atoi(line);
+		short t = atoi(line);
+		value[i] = t;
 		i++;
 		ERROR_EOF(fclose(file), "fclose : readFirst : diskIO.c");
 	}

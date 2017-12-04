@@ -19,6 +19,7 @@ samuel.elbe@gmail.com
 #include "LibBT.h"
 
 int main(int argc, char const *argv[]) {
-	SIZE = 10;
+	create(1, "../data/S");
 	return EXIT_SUCCESS;
+	
 }
