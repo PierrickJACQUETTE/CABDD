@@ -21,14 +21,17 @@ samuel.elbe@gmail.com
 
 #include "config.h"
 
+/**
+* \struct Node
+*/
 typedef struct {
-	int isLeaf;
-	short value1, value2; //cases
-	short *t1, *t2, *t3; //only for leaf
-	short s1, s2, s3; //for disk
-	struct Node *left, * middle, *right; //only for node
-	struct Node *father; //null à la racine
-	short level, indic; //level_indice
+	int isLeaf; /*!< savoir si cest une feuille*/
+	short value1, value2; /*!< cases*/
+	short *t1, *t2, *t3; /*!< only for leaf*/
+	short s1, s2, s3; /*!< for disk*/
+	struct Node *left, * middle, *right; /*!< only for node*/
+	struct Node *father; /*!< null à la racine*/
+	short level, indic; /*!< level_indice*/
 } Node;
 
 /**

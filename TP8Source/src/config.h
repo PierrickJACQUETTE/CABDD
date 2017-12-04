@@ -19,11 +19,6 @@ samuel.elbe@gmail.com
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
-#define SIZ_M 10
-#define MAX_SHT 32767
-
-int SIZE;
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
