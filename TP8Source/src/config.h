@@ -29,6 +29,8 @@ samuel.elbe@gmail.com
 #include <unistd.h>
 #include <errno.h>
 
+#define SIZ_M 10
+
 #define ERROR_NULL(a,str) if (a == NULL) {fprintf(stderr, "%s\n", str); return EXIT_FAILURE;}
 #define ERROR_SYS(a,str) if (a < 0) {fprintf(stderr, "%s\n", str); return EXIT_FAILURE;}
 #define ERROR_NULLCHAR(a,str) if (a == NULL) {fprintf(stderr, "%s\n", str); return NULL;}
