@@ -25,6 +25,7 @@ typedef struct {
 	int isLeaf;
 	short value1, value2; //cases
 	short *t1, *t2, *t3; //only for leaf
+	short s1, s2, s3; //for disk
 	struct Node *left, * middle, *right; //only for node
 	struct Node *father; //null à la racine
 	short level, indic; //level_indice
@@ -45,19 +46,19 @@ Node* create(int opt, char *name);
 * @param rac	 Node represantant la racine de l'arbre dans lequel inserer le nouveau noeud
 * @return        -1 si erreur sinon 0
 */
-int insertBulkData(int opt, short* i, Node *rac, char* file);
+int insertBulkData(int opt, short i, Node *rac, char* file);
 
 /**
 * permet de charger en memoire un arbre stocker dans le repertoire name
 * @param  rac	 arbre dans lequel stockee les noeuds
-* @param  name 	 nom du dossier 
+* @param  name 	 nom du dossier
 */
 void loadInMemory(Node *rac, char* name);
 
 /**
 * permet de stocker en disque un arbre
-* @param  rac	 arbre a stocker		
-* @param  name   dossier dans lequel stockee l'arbre	
+* @param  rac	 arbre a stocker
+* @param  name   dossier dans lequel stockee l'arbre
 */
 void storeToDisk(Node *rac, char* name);
 
