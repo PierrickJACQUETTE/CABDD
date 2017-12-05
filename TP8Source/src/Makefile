@@ -7,20 +7,20 @@ OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 all: $(EXEC)
 
 TP8: $(OBJECTS)
-	rm -r ../data/tree
+	rm -rf ../data/tree
 	$(CC) -o $@ $^ $(CFLAGS)
 
 %.o: %.c $(HEADERS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 run:
-	rm -r ../data/tree
+	rm -rf ../data/tree
 	./TP8
 
 clean:
 	rm -f *.o
 
 mrproper: clean
-	rm -r ../data/tree
+	rm -rf ../data/tree
 	rm -f $(EXEC)
 	rm -f *.gch
