@@ -31,6 +31,18 @@ samuel.elbe@gmail.com
 
 #define SIZ_M 10
 
+/**
+* \struct Node
+*/
+typedef struct {
+	int isLeaf; /*!< savoir si cest une feuille*/
+	short value1, value2; /*!< cases*/
+	short s1, s2, s3; /*!< for disk*/
+	struct Node *left, * middle, *right; /*!< only for node*/
+	struct Node *father; /*!< null à la racine*/
+	short level, indic; /*!< level_indice*/
+} Node;
+
 #define ERROR_NULL(a,str) if (a == NULL) {fprintf(stderr, "%s\n", str); return EXIT_FAILURE;}
 #define ERROR_SYS(a,str) if (a < 0) {fprintf(stderr, "%s\n", str); return EXIT_FAILURE;}
 #define ERROR_NULLCHAR(a,str) if (a == NULL) {fprintf(stderr, "%s\n", str); return NULL;}

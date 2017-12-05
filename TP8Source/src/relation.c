@@ -26,14 +26,6 @@ char* concateneNameDirectory(char* path, int number){
 	return str;
 }
 
-char* concateneNameDirectoryDirectory(char* pathParent, int path){
-	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneNameDirectoryDirectory : relation.c");
-	int error = sprintf(str, "%s/%d", pathParent, path);
-	ERROR_SYSCHAR(error , "sprintf : concateneNameDirectoryDirectory : relation.c");
-	return str;
-}
-
 char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	char *str = malloc(sizeof(char)*20);
 	ERROR_NULLCHAR(str, "malloc : concateneNameFile : relation.c");
@@ -82,4 +74,11 @@ int countFileInDirectory(char* path){
 
 int createDirectory(char* path){
 	return mkdir(path, 0777);
+}
+
+char* removeLineJump(char* line){
+	if(line[strlen(line)-1] == '\n'){
+		line[(strlen(line) - 1)] = '\0';
+	}
+	return line;
 }

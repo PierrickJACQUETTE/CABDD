@@ -29,13 +29,6 @@ samuel.elbe@gmail.com
 */
 char* concateneNameDirectory(char* path, int number);
 
-/**
-* concatener les arguments pour former le nom du repertoire
-* @param  pathParent    chemin du dossier parent
-* @param  path			chemin du dossier courant
-* @return        		le resultat de la concatenation
-*/
-char* concateneNameDirectoryDirectory(char* pathParent, int path);
 
 /**
 * concatener les arguments pour former le nom du fichier
@@ -73,5 +66,9 @@ int countFileInDirectory(char* path);
 * @return      erreur eventuelle
 */
 int createDirectory(char* path);
+
+//Supprime le \n a la fin de line
+char* removeLineJump(char* line);
+
 
 #endif

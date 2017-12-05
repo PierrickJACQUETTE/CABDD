@@ -22,15 +22,6 @@ samuel.elbe@gmail.com
 #include "config.h"
 #include "relation.h"
 
-/**
-* ecrire de min a size valeur dans le fichier
-* @param  path  chemin du fichier
-* @param  value tableau de ce qu'il faut ecrire
-* @param  size  tableau du tableau
-* @param  max   indice
-* @return       nombre de short ecrit
-*/
-int writeTabValue(char* path, short* value, int size, int max);
 
 /**
 * lire dans le fichier et stocker les valeurs dans value
@@ -48,4 +39,8 @@ int readTabValue(char* path, short* value);
 */
 int readFirst(char *path, short* value);
 
+Node* parse(Node* rac, char* name);
+void ecrire_node(Node* node);
+void ecrire_leaf(Node* node);
+char* getRac(char* name, char* nameFile);
 #endif
