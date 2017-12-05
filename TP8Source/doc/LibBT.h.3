@@ -9,13 +9,6 @@ LibBT.h \-
 \fC#include 'config\&.h'\fP
 .br
 
-.SS "Classes"
-
-.in +1c
-.ti -1c
-.RI "struct \fBNode\fP"
-.br
-.in -1c
 .SS "Macros"
 
 .in +1c
@@ -27,10 +20,10 @@ LibBT.h \-
 
 .in +1c
 .ti -1c
-.RI "\fBNode\fP * \fBcreate\fP (\fBNode\fP *rac, int opt, char *name)"
+.RI "\fBNode\fP * \fBcreate\fP (\fBNode\fP *rac, char *name)"
 .br
 .ti -1c
-.RI "int \fBinsertBulkData\fP (int opt, short i, \fBNode\fP *rac, char *file)"
+.RI "int \fBinsertBulkData\fP (short i, \fBNode\fP *rac, char *file)"
 .br
 .ti -1c
 .RI "\fBNode\fP * \fBloadInMemory\fP (\fBNode\fP *rac, char *name)"
@@ -48,12 +41,12 @@ LibBT.h \-
 
 .SH "Documentation des fonctions"
 .PP 
-.SS "\fBNode\fP* create (\fBNode\fP *rac, intopt, char *name)"
+.SS "\fBNode\fP* create (\fBNode\fP *rac, char *name)"
 creer un arbre 
 .PP
 \fBParamètres:\fP
 .RS 4
-\fIopt\fP savoir si l'on veux que l'arbre soit en memoire ou en disque(1) 
+\fIrac\fP adresse de l'arbre que l'on va cree 
 .br
 \fIname\fP nom du repertoire ou est stocke les fichiers S triee 
 .RE
@@ -65,14 +58,21 @@ l'arbre cree avec tout les fichiers de S
 .PP
 
 .SS "void display (\fBNode\fP *rac, intnb)"
-
-.SS "int insertBulkData (intopt, shorti, \fBNode\fP *rac, char *file)"
-permet d'inserrer dans l'arbre le noeud contenu dans le file 
+permet deafficher un arbre 
 .PP
 \fBParamètres:\fP
 .RS 4
-\fIopt\fP savoir si l'on veux que l'arbre soit en memoire ou en disque(1) 
+\fIrac\fP arbre a afficher 
 .br
+\fInb\fP entier representant lespacement (0 pour la racine) 
+.RE
+.PP
+
+.SS "int insertBulkData (shorti, \fBNode\fP *rac, char *file)"
+permet d'inserer dans l'arbre le noeud contenu dans le file 
+.PP
+\fBParamètres:\fP
+.RS 4
 \fIi\fP nom du fichier que l'on veux inserer 
 .br
 \fIrac\fP \fBNode\fP represantant la racine de l'arbre dans lequel inserer le nouveau noeud 

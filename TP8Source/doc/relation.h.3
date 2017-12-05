@@ -23,22 +23,13 @@ relation.h \-
 .RI "char * \fBconcateneNameDirectory\fP (char *path, int number)"
 .br
 .ti -1c
-.RI "char * \fBconcateneNameDirectoryDirectory\fP (char *pathParent, int path)"
-.br
-.ti -1c
 .RI "char * \fBconcateneNameFile\fP (char *pathDirectory, char *nameFile, int numberFile)"
-.br
-.ti -1c
-.RI "char * \fBconcateneChar\fP (char *pathDirectory, char *path)"
-.br
-.ti -1c
-.RI "int \fBlastNumberNameFile\fP (char *path)"
 .br
 .ti -1c
 .RI "int \fBcountFileInDirectory\fP (char *path)"
 .br
 .ti -1c
-.RI "int \fBcreateDirectory\fP (char *path)"
+.RI "char * \fBremoveLineJump\fP (char *line)"
 .br
 .in -1c
 .SH "Documentation des macros"
@@ -47,22 +38,6 @@ relation.h \-
 
 .SH "Documentation des fonctions"
 .PP 
-.SS "char* concateneChar (char *pathDirectory, char *path)"
-concatener les arguments pour former le nom du fichier 
-.PP
-\fBParamètres:\fP
-.RS 4
-\fIpathDirectory\fP chemin du dossier 
-.br
-\fInameFile\fP chemin du sous dossier 
-.RE
-.PP
-\fBRenvoie:\fP
-.RS 4
-le resultat de la concatenation 
-.RE
-.PP
-
 .SS "char* concateneNameDirectory (char *path, intnumber)"
 concatener les arguments pour former le nom du repertoire 
 .PP
@@ -71,22 +46,6 @@ concatener les arguments pour former le nom du repertoire
 \fIpath\fP chemin du dossier 
 .br
 \fInumber\fP indice du dossier 
-.RE
-.PP
-\fBRenvoie:\fP
-.RS 4
-le resultat de la concatenation 
-.RE
-.PP
-
-.SS "char* concateneNameDirectoryDirectory (char *pathParent, intpath)"
-concatener les arguments pour former le nom du repertoire 
-.PP
-\fBParamètres:\fP
-.RS 4
-\fIpathParent\fP chemin du dossier parent 
-.br
-\fIpath\fP chemin du dossier courant 
 .RE
 .PP
 \fBRenvoie:\fP
@@ -127,31 +86,21 @@ nombre de fichier
 .RE
 .PP
 
-.SS "int createDirectory (char *path)"
-creer le repertoire 
+.SS "char* removeLineJump (char *line)"
+Supprime le 
+.br
+ a la fin de line 
 .PP
 \fBParamètres:\fP
 .RS 4
-\fIpath\fP chemin du dossier 
+\fIline\fP ou il faut retirer le 
+.br
 .RE
 .PP
 \fBRenvoie:\fP
 .RS 4
-erreur eventuelle 
-.RE
-.PP
-
-.SS "int lastNumberNameFile (char *path)"
-connaitre le numero du dernier fichier dans ce repertoire 
-.PP
-\fBParamètres:\fP
-.RS 4
-\fIpath\fP chemin du dossier 
-.RE
-.PP
-\fBRenvoie:\fP
-.RS 4
-nombre du dernier fichier 
+new line sans 
+.br
 .RE
 .PP
 

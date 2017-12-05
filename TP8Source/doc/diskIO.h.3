@@ -15,17 +15,76 @@ diskIO.h \-
 
 .in +1c
 .ti -1c
-.RI "int \fBwriteTabValue\fP (char *path, short *value, int size, int max)"
-.br
-.ti -1c
 .RI "int \fBreadTabValue\fP (char *path, short *value)"
 .br
 .ti -1c
 .RI "int \fBreadFirst\fP (char *path, short *value)"
 .br
+.ti -1c
+.RI "\fBNode\fP * \fBparse\fP (\fBNode\fP *rac, char *name)"
+.br
+.ti -1c
+.RI "void \fBecrire_node\fP (\fBNode\fP *node)"
+.br
+.ti -1c
+.RI "void \fBecrire_leaf\fP (\fBNode\fP *node)"
+.br
+.ti -1c
+.RI "char * \fBgetRac\fP (char *name, char *nameFile)"
+.br
 .in -1c
 .SH "Documentation des fonctions"
 .PP 
+.SS "void ecrire_leaf (\fBNode\fP *node)"
+ecrire le contenu dun node dans un fichier 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fInode\fP le node a ecrire sachant que c'est une feuille 
+.RE
+.PP
+
+.SS "void ecrire_node (\fBNode\fP *node)"
+ecrire le contenu dun node dans un fichier 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fInode\fP le node a ecrire 
+.RE
+.PP
+
+.SS "char* getRac (char *name, char *nameFile)"
+permet a partir d'un fichier de trouver le fichier ou la racine est stocker 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIname\fP nom du repertoire 
+.br
+\fInameFile\fP nom du fichier ou lire 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+nom du fichier ou est la racine 
+.RE
+.PP
+
+.SS "\fBNode\fP* parse (\fBNode\fP *rac, char *name)"
+lire le contenu dun fichier pour le stocker dans un node 
+.PP
+\fBParamètres:\fP
+.RS 4
+\fIrac\fP node où stocket les infprmations 
+.br
+\fIname\fP nom du fichier ou lire 
+.RE
+.PP
+\fBRenvoie:\fP
+.RS 4
+node rempli 
+.RE
+.PP
+
 .SS "int readFirst (char *path, short *value)"
 lire dans le fichier et stocker la premiere valeure 
 .PP
@@ -55,26 +114,6 @@ lire dans le fichier et stocker les valeurs dans value
 \fBRenvoie:\fP
 .RS 4
 nombre de short lu 
-.RE
-.PP
-
-.SS "int writeTabValue (char *path, short *value, intsize, intmax)"
-ecrire de min a size valeur dans le fichier 
-.PP
-\fBParamètres:\fP
-.RS 4
-\fIpath\fP chemin du fichier 
-.br
-\fIvalue\fP tableau de ce qu'il faut ecrire 
-.br
-\fIsize\fP tableau du tableau 
-.br
-\fImax\fP indice 
-.RE
-.PP
-\fBRenvoie:\fP
-.RS 4
-nombre de short ecrit 
 .RE
 .PP
 
