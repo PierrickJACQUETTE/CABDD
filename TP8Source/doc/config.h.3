@@ -1,4 +1,4 @@
-.TH "config.h" 3 "Lundi 4 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
+.TH "config.h" 3 "Mardi 5 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -32,29 +32,19 @@ config.h \-
 .RI "#define \fBSIZ_M\fP   10"
 .br
 .ti -1c
-.RI "#define \fBMAX_SHT\fP   32767"
+.RI "#define \fBERROR_NULL\fP(a, str)   if (a == NULL) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
 .br
 .ti -1c
-.RI "#define \fBERROR_NULL\fP(a,  str)   if (a == NULL) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
+.RI "#define \fBERROR_SYS\fP(a, str)   if (a < 0) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
 .br
 .ti -1c
-.RI "#define \fBERROR_SYS\fP(a,  str)   if (a < 0) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
+.RI "#define \fBERROR_NULLCHAR\fP(a, str)   if (a == NULL) {fprintf(stderr, '%s\\n', str); return NULL;}"
 .br
 .ti -1c
-.RI "#define \fBERROR_NULLCHAR\fP(a,  str)   if (a == NULL) {fprintf(stderr, '%s\\n', str); return NULL;}"
+.RI "#define \fBERROR_SYSCHAR\fP(a, str)   if (a < 0) {fprintf(stderr, '%s\\n', str); return NULL;}"
 .br
 .ti -1c
-.RI "#define \fBERROR_SYSCHAR\fP(a,  str)   if (a < 0) {fprintf(stderr, '%s\\n', str); return NULL;}"
-.br
-.ti -1c
-.RI "#define \fBERROR_EOF\fP(a,  str)   if (a == EOF) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
-.br
-.in -1c
-.SS "Variables"
-
-.in +1c
-.ti -1c
-.RI "int \fBSIZE\fP"
+.RI "#define \fBERROR_EOF\fP(a, str)   if (a == EOF) {fprintf(stderr, '%s\\n', str); return EXIT_FAILURE;}"
 .br
 .in -1c
 .SH "Documentation des macros"
@@ -69,13 +59,7 @@ config.h \-
 
 .SS "#define ERROR_SYSCHAR(a, str)   if (a < 0) {fprintf(stderr, '%s\\n', str); return NULL;}"
 
-.SS "#define MAX_SHT   32767"
-
 .SS "#define SIZ_M   10"
-
-.SH "Documentation des variables"
-.PP 
-.SS "int SIZE"
 
 .SH "Auteur"
 .PP 

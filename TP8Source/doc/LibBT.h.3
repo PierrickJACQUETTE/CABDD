@@ -1,4 +1,4 @@
-.TH "LibBT.h" 3 "Lundi 4 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
+.TH "LibBT.h" 3 "Mardi 5 Décembre 2017" "CavBDM2 - BDD" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,16 +27,19 @@ LibBT.h \-
 
 .in +1c
 .ti -1c
-.RI "\fBNode\fP * \fBcreate\fP (int opt, char *name)"
+.RI "\fBNode\fP * \fBcreate\fP (\fBNode\fP *rac, int opt, char *name)"
 .br
 .ti -1c
 .RI "int \fBinsertBulkData\fP (int opt, short i, \fBNode\fP *rac, char *file)"
 .br
 .ti -1c
-.RI "void \fBloadInMemory\fP (\fBNode\fP *rac, char *name)"
+.RI "\fBNode\fP * \fBloadInMemory\fP (\fBNode\fP *rac, char *name)"
 .br
 .ti -1c
 .RI "void \fBstoreToDisk\fP (\fBNode\fP *rac, char *name)"
+.br
+.ti -1c
+.RI "void \fBdisplay\fP (\fBNode\fP *rac, int nb)"
 .br
 .in -1c
 .SH "Documentation des macros"
@@ -45,7 +48,7 @@ LibBT.h \-
 
 .SH "Documentation des fonctions"
 .PP 
-.SS "\fBNode\fP* create (int opt, char * name)"
+.SS "\fBNode\fP* create (\fBNode\fP *rac, intopt, char *name)"
 creer un arbre 
 .PP
 \fBParamètres:\fP
@@ -61,7 +64,9 @@ l'arbre cree avec tout les fichiers de S
 .RE
 .PP
 
-.SS "int insertBulkData (int opt, short i, \fBNode\fP * rac, char * file)"
+.SS "void display (\fBNode\fP *rac, intnb)"
+
+.SS "int insertBulkData (intopt, shorti, \fBNode\fP *rac, char *file)"
 permet d'inserrer dans l'arbre le noeud contenu dans le file 
 .PP
 \fBParamètres:\fP
@@ -79,7 +84,7 @@ permet d'inserrer dans l'arbre le noeud contenu dans le file
 .RE
 .PP
 
-.SS "void loadInMemory (\fBNode\fP * rac, char * name)"
+.SS "\fBNode\fP* loadInMemory (\fBNode\fP *rac, char *name)"
 permet de charger en memoire un arbre stocker dans le repertoire name 
 .PP
 \fBParamètres:\fP
@@ -90,7 +95,7 @@ permet de charger en memoire un arbre stocker dans le repertoire name
 .RE
 .PP
 
-.SS "void storeToDisk (\fBNode\fP * rac, char * name)"
+.SS "void storeToDisk (\fBNode\fP *rac, char *name)"
 permet de stocker en disque un arbre 
 .PP
 \fBParamètres:\fP
