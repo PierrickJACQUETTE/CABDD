@@ -20,11 +20,14 @@ samuel.elbe@gmail.com
 
 int main(int argc, char const *argv[]) {
 	Node* n = NULL;
-	n = create(n, 1, "../data/S");
+	n = create(n, "../data/S");
+	printf("\n--------------- create tree ----------------\n\n");
+	display(n, 0);
 	mkdir("../data/tree", S_IRWXU | S_IXGRP | S_IRGRP | S_IXOTH | S_IROTH);
 	storeToDisk(n, "../data/tree");
 	Node* n2 = NULL;
 	n2 = loadInMemory(n2, "../data/tree");
+	printf("\n--------------- load in memory -------------\n\n");
 	display(n2, 0);
 	return EXIT_SUCCESS;
 

@@ -39,8 +39,31 @@ int readTabValue(char* path, short* value);
 */
 int readFirst(char *path, short* value);
 
+/**
+ * lire le contenu dun fichier pour le stocker dans un node
+ * @param  rac  node où stocket les infprmations
+ * @param  name nom du fichier ou lire
+ * @return      node rempli
+ */
 Node* parse(Node* rac, char* name);
+
+/**
+ * ecrire le contenu dun node dans un fichier
+ * @param node le node a ecrire
+ */
 void ecrire_node(Node* node);
+
+/**
+ * ecrire le contenu dun node dans un fichier
+ * @param node le node a ecrire sachant que c'est une feuille
+ */
 void ecrire_leaf(Node* node);
+
+/**
+ * permet a partir d'un fichier de trouver le fichier ou la racine est stocker
+ * @param  name     nom du repertoire
+ * @param  nameFile nom du fichier ou lire
+ * @return          nom du fichier ou est la racine
+ */
 char* getRac(char* name, char* nameFile);
 #endif

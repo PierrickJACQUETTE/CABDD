@@ -54,34 +54,26 @@ void init(Node** r){
 	*r = rac;
 }
 
-//create tree - name -> directory where files are inserted
-Node* create(Node* rac, int opt, char *name){
+Node* create(Node* rac, char *name){
 	init(&rac);
-	int i, n = countFileInDirectory(name);
-
+	int i;
+	int n = countFileInDirectory(name);
 	for(i = 0; i < n; i++){
 		char *file = concateneNameFile(name, NULL, i);
-		insertBulkData(opt, i, rac, file); // pour chaque fichier  je l'ajoute à ma racine
-		display(rac,0);
+		insertBulkData(i, rac, file); // pour chaque fichier  je l'ajoute à ma racine
 	}
 	return rac;
 }
 
-int insertBulkData(int opt, short i, Node *rac, char* file){
+int insertBulkData(short i, Node *rac, char* file){
 	if(rac == NULL){
 		return -1;
 	}
 	if(rac->isLeaf){
 		short tab[SIZ_M];
-		if(opt){
-			tab[0] = 0;
-			if(readFirst(file, tab) == 0){
-				return -1;
-			}
-		} else {
-			if(readTabValue(file, tab) == 0){
-				return -1;
-			}
+		tab[0] = 0;
+		if(readFirst(file, tab) == 0){
+			return -1;
 		}
 		if(rac->s1 == -1){
 			rac->s1 = i;
@@ -129,19 +121,13 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 		}
 	} else {
 		if(rac->value2 == -1){
-			int rc = insertBulkData(opt, i, (Node *)rac->middle, file);
+			int rc = insertBulkData( i, (Node *)rac->middle, file);
 			if(rc){
 
 				short tab[SIZ_M];
-				if(opt){
-					tab[0] = 0;
-					if(readFirst(file, tab) == 0){
-						return -1;
-					}
-				} else {
-					if(readTabValue(file, tab) == 0){
-						return -1;
-					}
+				tab[0] = 0;
+				if(readFirst(file, tab) == 0){
+					return -1;
 				}
 
 				Node * r = NULL;
@@ -159,7 +145,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 				((Node*)rac->middle)->s3 = -1;
 			}
 		} else {
-			int rc = insertBulkData(opt, i, (Node *)rac->right, file);
+			int rc = insertBulkData(i, (Node *)rac->right, file);
 			if(rc){
 				if(rac->father == NULL){
 					Node *l = NULL;
@@ -170,15 +156,9 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 					init(&gc);
 
 					short tab[SIZ_M];
-					if(opt){
-						tab[0] = 0;
-						if(readFirst(file, tab) == 0){
-							return -1;
-						}
-					} else {
-						if(readTabValue(file, tab) == 0){
-							return -1;
-						}
+					tab[0] = 0;
+					if(readFirst(file, tab) == 0){
+						return -1;
 					}
 
 					gc->value1 = tab[0];

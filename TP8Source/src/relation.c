@@ -40,15 +40,7 @@ char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	return str;
 }
 
-char* concateneChar(char* pathDirectory,  char* path){
-	char *str = malloc(sizeof(char)*20);
-	ERROR_NULLCHAR(str, "malloc : concateneChar : relation.c");
-	int error = sprintf(str, "%s/%s", pathDirectory, path);
-	ERROR_SYSCHAR(error , "sprintf : concateneChar : relation.c");
-	return str;
-}
-
-int lastNumberNameFile(char* path){
+int countFileInDirectory(char* path){
 	int file_count = 0;
 	DIR * dirp;
 	struct dirent * entry;
@@ -65,15 +57,7 @@ int lastNumberNameFile(char* path){
 	}
 	int error = closedir(dirp);
 	ERROR_SYS(error, "closedir : lastNumberNameFile : relation.c");
-	return file_count-1;
-}
-
-int countFileInDirectory(char* path){
-	return lastNumberNameFile(path)+1;
-}
-
-int createDirectory(char* path){
-	return mkdir(path, 0777);
+	return file_count;
 }
 
 char* removeLineJump(char* line){

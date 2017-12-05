@@ -25,20 +25,19 @@ samuel.elbe@gmail.com
 
 /**
 * creer un arbre
-* @param  opt 	 savoir si l'on veux que l'arbre soit en memoire ou en disque(1)
+* @param rac     adresse de l'arbre que l'on va cree
 * @param  name	 nom du repertoire ou est stocke les fichiers S triee
 * @return        l'arbre cree avec tout les fichiers de S
 */
-Node* create(Node* rac, int opt, char *name);
+Node* create(Node* rac, char *name);
 
 /**
-* permet d'inserrer dans l'arbre le noeud contenu dans le file
-* @param  opt	 savoir si l'on veux que l'arbre soit en memoire ou en disque(1)
+* permet d'inserer dans l'arbre le noeud contenu dans le file
 * @param  i 	 nom du fichier que l'on veux inserer
 * @param rac	 Node represantant la racine de l'arbre dans lequel inserer le nouveau noeud
 * @return        -1 si erreur sinon 0
 */
-int insertBulkData(int opt, short i, Node *rac, char* file);
+int insertBulkData(short i, Node *rac, char* file);
 
 /**
 * permet de charger en memoire un arbre stocker dans le repertoire name
@@ -54,6 +53,11 @@ Node* loadInMemory(Node *rac, char* name);
 */
 void storeToDisk(Node *rac, char* name);
 
+/**
+* permet deafficher un arbre
+* @param  rac	 arbre a afficher
+* @param  nb    entier representant lespacement (0 pour la racine)
+*/
 void display(Node* rac, int nb);
 
 #endif

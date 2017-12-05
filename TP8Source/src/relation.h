@@ -29,7 +29,6 @@ samuel.elbe@gmail.com
 */
 char* concateneNameDirectory(char* path, int number);
 
-
 /**
 * concatener les arguments pour former le nom du fichier
 * @param  pathDirectory   chemin du dossier
@@ -40,20 +39,6 @@ char* concateneNameDirectory(char* path, int number);
 char* concateneNameFile(char* pathDirectory, char* nameFile, int numberFile);
 
 /**
-* concatener les arguments pour former le nom du fichier
-* @param  pathDirectory   chemin du dossier
-* @param  nameFile      chemin du sous dossier
-* @return        le resultat de la concatenation
-*/
-char* concateneChar(char* pathDirectory,  char* path);
-/**
-* connaitre le numero du dernier fichier dans ce repertoire
-* @param  path chemin du dossier
-* @return      nombre du dernier fichier
-*/
-int lastNumberNameFile(char* path);
-
-/**
 * compter le nombre de fichier dans le repertoire
 * @param  path chemin du dossier
 * @return      nombre de fichier
@@ -61,13 +46,10 @@ int lastNumberNameFile(char* path);
 int countFileInDirectory(char* path);
 
 /**
-* creer le repertoire
-* @param  path chemin du dossier
-* @return      erreur eventuelle
-*/
-int createDirectory(char* path);
-
-//Supprime le \n a la fin de line
+ * Supprime le \n a la fin de line
+ * @param  line ou il faut retirer le \n
+ * @return new line sans \n
+ */
 char* removeLineJump(char* line);
 
 
