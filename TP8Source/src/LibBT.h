@@ -27,7 +27,6 @@ samuel.elbe@gmail.com
 typedef struct {
 	int isLeaf; /*!< savoir si cest une feuille*/
 	short value1, value2; /*!< cases*/
-	short *t1, *t2, *t3; /*!< only for leaf*/
 	short s1, s2, s3; /*!< for disk*/
 	struct Node *left, * middle, *right; /*!< only for node*/
 	struct Node *father; /*!< null à la racine*/
@@ -40,7 +39,7 @@ typedef struct {
 * @param  name	 nom du repertoire ou est stocke les fichiers S triee
 * @return        l'arbre cree avec tout les fichiers de S
 */
-Node* create(int opt, char *name);
+Node* create(Node* rac, int opt, char *name);
 
 /**
 * permet d'inserrer dans l'arbre le noeud contenu dans le file
@@ -56,7 +55,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file);
 * @param  rac	 arbre dans lequel stockee les noeuds
 * @param  name 	 nom du dossier
 */
-void loadInMemory(Node *rac, char* name);
+Node* loadInMemory(Node *rac, char* name);
 
 /**
 * permet de stocker en disque un arbre
@@ -64,5 +63,7 @@ void loadInMemory(Node *rac, char* name);
 * @param  name   dossier dans lequel stockee l'arbre
 */
 void storeToDisk(Node *rac, char* name);
+
+void display(Node* rac, int nb);
 
 #endif

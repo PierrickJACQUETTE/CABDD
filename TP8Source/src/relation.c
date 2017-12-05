@@ -37,7 +37,13 @@ char* concateneNameDirectoryDirectory(char* pathParent, int path){
 char* concateneNameFile(char* pathDirectory,  char* nameFile, int numberFile){
 	char *str = malloc(sizeof(char)*20);
 	ERROR_NULLCHAR(str, "malloc : concateneNameFile : relation.c");
-	int error = sprintf(str, "%s/%s%d.txt", pathDirectory, nameFile, numberFile);
+	int error;
+	if(nameFile == NULL){
+		error = sprintf(str, "%s/%d.txt", pathDirectory, numberFile);
+	}
+	else{
+		error = sprintf(str, "%s/%s", pathDirectory, nameFile);
+	}
 	ERROR_SYSCHAR(error , "sprintf : concateneNameFile : relation.c");
 	return str;
 }

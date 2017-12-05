@@ -20,9 +20,24 @@ samuel.elbe@gmail.com
 #include "relation.h"
 #include "diskIO.h"
 
-//create tree - name -> directory where files are inserted
-Node* create(int opt, char *name){
-	Node *rac = malloc(sizeof(Node)); // node vide qui me sert de base
+
+void display(Node* rac, int nb){
+	if(rac != NULL){
+		int i;
+		for(i=0;i<nb; i++){
+			printf("   ");
+		}
+		printf("%d %d\n", rac->value1, rac->value2);
+		if(rac->isLeaf != 1){
+			display((Node*)rac->left, nb+1);
+			display((Node*)rac->middle, nb+1);
+			display((Node*)rac->right, nb+1);
+		}
+	}
+}
+
+void init(Node** r){
+	Node* rac = malloc(sizeof( Node)); // node vide qui me sert de base
 	if(rac == NULL) { exit(-1); }
 	rac->isLeaf = 1;
 	rac->value1 = -1;
@@ -30,33 +45,25 @@ Node* create(int opt, char *name){
 	rac->s1 = -1;
 	rac->s2 = -1;
 	rac->s3 = -1;
-	rac->t1 = NULL;
-	rac->t2 = NULL;
-	rac->t3 = NULL;
-	rac->father = NULL;
 	rac->level = 0;
 	rac->indic = 0;
+	rac->left = NULL;
+	rac->right = NULL;
+	rac->middle = NULL;
+	rac->father = NULL;
+	*r = rac;
+}
 
+//create tree - name -> directory where files are inserted
+Node* create(Node* rac, int opt, char *name){
+	init(&rac);
 	int i, n = countFileInDirectory(name);
-
+	
 	for(i = 0; i < n; i++){
-		char *file = concateneNameFile(name,"",i);
+		char *file = concateneNameFile(name, NULL, i);
 		insertBulkData(opt, i, rac, file); // pour chaque fichier  je l'ajoute à ma racine
-		printf("%s %d %d \n", file, rac->value1, rac->value2);
+		display(rac,0);
 	}
-	printf("\nrac %d %d\n", ((Node*)rac)->value1, ((Node*)rac)->value2);
-	printf("rac left %d %d\n", ((Node*)((Node*)rac)->left)->value1, ((Node*)((Node*)rac)->left)->value2);
-	printf("rac middle %d %d\n", ((Node*)((Node*)rac)->middle)->value1, ((Node*)((Node*)rac)->middle)->value2);
-	printf("rac left left %d %d\n", ((Node*)((Node*)((Node*)rac)->left)->left)->value1, ((Node*)((Node*)((Node*)rac)->left)->left)->value2);
-	printf("rac left middle %d %d\n", ((Node*)((Node*)((Node*)rac)->left)->middle)->value1, ((Node*)((Node*)((Node*)rac)->left)->middle)->value2);
-	printf("rac middle left %d %d\n", ((Node*)((Node*)((Node*)rac)->middle)->left)->value1, ((Node*)((Node*)((Node*)rac)->middle)->left)->value2);
-	printf("rac middle middle %d %d\n", ((Node*)((Node*)((Node*)rac)->middle)->middle)->value1, ((Node*)((Node*)((Node*)rac)->middle)->middle)->value2);
-
-	printf("rac left left %d %d %d\n", ((Node*)((Node*)((Node*)rac)->left)->left)->s1, ((Node*)((Node*)((Node*)rac)->left)->left)->s2, ((Node*)((Node*)((Node*)rac)->left)->left)->s2);
-	printf("rac left middle %d %d %d\n", ((Node*)((Node*)((Node*)rac)->left)->middle)->s1, ((Node*)((Node*)((Node*)rac)->left)->middle)->s2, ((Node*)((Node*)((Node*)rac)->left)->middle)->s2);
-	printf("rac middle left %d %d %d\n", ((Node*)((Node*)((Node*)rac)->middle)->left)->s1, ((Node*)((Node*)((Node*)rac)->middle)->left)->s2, ((Node*)((Node*)((Node*)rac)->middle)->left)->s2);
-	printf("rac middle middle %d %d %d\n", ((Node*)((Node*)((Node*)rac)->middle)->middle)->s1, ((Node*)((Node*)((Node*)rac)->middle)->middle)->s2, ((Node*)((Node*)((Node*)rac)->middle)->middle)->s3);
-
 	return rac;
 }
 
@@ -64,9 +71,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 	if(rac == NULL){
 		return -1;
 	}
-
 	if(rac->isLeaf){
-
 		short tab[SIZ_M];
 		if(opt){
 			tab[0] = 0;
@@ -78,82 +83,31 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 				return -1;
 			}
 		}
-
-		if(rac->t1 == NULL){
-			if(opt){
-				rac->s1 = i;
-				rac->t1 = &i;
-				// short k = *i;
-				// rac->t1 = &k;
-			} else {
-				rac->t1 = tab;
-			}
-		} else if (rac->t2 == NULL) {
+		if(rac->s1 == -1){
+			rac->s1 = i;
+		} else if (rac->s2 == -1) {
 			rac->value1 = tab[0];
-			if(opt){
-				// short k = *i;
-				// rac->t2 = &k;
-				// printf("rac : %d et i : %d\n\n", (int)*(rac->t2), *i);
-				rac->s2 = i;
-				rac->t2 = &i;
-			} else {
-				rac->t2 = tab;
-			}
-		} else if (rac->t3 == NULL){
+			rac->s2 = i;
+		} else if (rac->s3 == -1){
 			rac->value2 = tab[0];
-			if(opt){
-				rac->s3 = i;
-				rac->t3 = &i;
-				// short k = *i;
-				// rac->t3 = &k;
-				// printf("rac : %d et i : %d\n\n", (int)(*rac->t2), *i);
-			} else {
-				rac->t3 = tab;
-			}
+			rac->s3 = i;
 		} else {
 			if(rac->father == NULL){
-				Node *l = malloc(sizeof(Node));
-				if(l == NULL) { exit(-1); }
-				Node *m = malloc(sizeof(Node));
-				if(m == NULL) { exit(-1); }
+				Node *l = NULL;
+				init(&l);
+				Node *m =NULL;
+				init(&m);
 
-				// printf("rac : %d et i : %d\n\n", (int)*(rac->t1), *i);
-				// printf("rac : %d et i : %d\n\n", (int)*(rac->t2), *i);
-				l->isLeaf = 1;
 				l->value1 = rac->value1;
-				l->value2 = -1;
-				// short t1 = *(rac->t1);
-				// l->t1 = &t1;
-				// short t2 = *(rac->t2);
-				// l->t2 = &t2;
-
-				if(opt){
-					l->s1 = rac->s1;
-					l->s2 = rac->s2;
-				} else {
-
-				}
+				l->s1 = rac->s1;
+				l->s2 = rac->s2;
 				l->father = (struct Node*)rac;
 				l->level = rac->level;
 				l->indic = rac->indic;
 
-				// printf("%d", (int)(*(l->t2)));
-
-				m->isLeaf = 1;
 				m->value1 = tab[0];
-				m->value2 = -1;
-				// short t = *(rac->t3);
-				// m->t1 = &t;
-				// short t3 = *(rac->t3);
-				// m->t1 = &t3;
-				if(opt){
-					// short k = *i;
-					// m->t2 = &k;
-					m->s1 = rac->s3;
-					m->s2 = i;
-				} else {
-					m->t2 = tab;
-				}
+				m->s1 = rac->s3;
+				m->s2 = i;
 				m->father = (struct Node*)rac;
 				m->level = rac->level;
 				m->indic = (rac->indic)+1;
@@ -164,15 +118,10 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 				rac->s1 = -1;
 				rac->s2 = -1;
 				rac->s3 = -1;
-				rac->t1 = NULL;
-				rac->t2 = NULL;
-				rac->t3 = NULL;
 				rac->left = (struct Node*)l;
 				rac->middle = (struct Node*)m;
 				rac->level = (rac->level)+1;
 				rac->indic = 0;
-
-				// printf("%d", (int)(*((Node*)(rac->left))->t2));
 
 			} else {
 				return 1;
@@ -195,44 +144,30 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 					}
 				}
 
-				Node * r = malloc(sizeof(Node));
-				if(r == NULL) { exit(-1); }
-
-				r->isLeaf = 1;
+				Node * r = NULL;
+				init(&r);
 				r->value1 = tab[0];
-				// short t1 = *(((Node*)rac->middle)->t3);
-				// r->t1 = &t1;
-
-				if(opt){
-					// short k = *i;
-					// r->t2 = &k;
-					r->s1 = ((Node*)rac->middle)->s3;
-					r->s2 = i;
-					r->t1 = &i;
-					r->t2 = &i;
-				} else {
-					r->t2 = tab;
-				}
+				r->s1 = ((Node*)rac->middle)->s3;
+				r->s2 = i;
 				r->father = (struct Node*)rac;
 				r->level = ((Node*)rac->middle)->level;
 				r->indic = (((Node*)rac->middle)->indic)+1;
-
 				rac->value2 = ((Node*)rac->middle)->value2;
 				rac->right = (struct Node*)r;
 
 				((Node*)rac->middle)->value2 = -1;
-				// ((Node*)rac->middle)->t3 = NULL;
+				((Node*)rac->middle)->s3 = -1;
 			}
 		} else {
 			int rc = insertBulkData(opt, i, (Node *)rac->right, file);
 			if(rc){
 				if(rac->father == NULL){
-					Node *l = malloc(sizeof(Node));
-					if(l == NULL) { exit(-1); }
-					Node *m = malloc(sizeof(Node));
-					if(m == NULL) { exit(-1); }
-					Node *gc = malloc(sizeof(Node));
-					if(gc == NULL) { exit(-1); }
+					Node *l = NULL;
+					init(&l);
+					Node *m = NULL;
+					init(&m);
+					Node *gc = NULL;
+					init(&gc);
 
 					short tab[SIZ_M];
 					if(opt){
@@ -246,44 +181,35 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 						}
 					}
 
-					gc->isLeaf = 1;
 					gc->value1 = tab[0];
-					gc->value2 = -1;
-					// short t1 = *(((Node*)rac->right)->t3);
-					// gc->t1 = &t1;
-					if(opt){
-						// short k = *i;
-						// gc->t2 = &k;
-						gc->s1 = ((Node*)rac->right)->s3;
-						gc->s2 = i;
-						gc->t1 = &i;
-						gc->t2 = &i;
-					} else {
-						gc->t2 = tab;
-					}
+					gc->s1 = ((Node*)rac->right)->s3;
+					gc->s2 = i;
 					gc->father = (struct Node*)m;
 					gc->level = ((Node*)rac->right)->level;
 					gc->indic = (((Node*)rac->right)->indic)+1;
 
 					l->isLeaf = 0;
 					l->value1 = rac->value1;
-					l->value2 = -1;
 					l->left = rac->left;
 					l->middle = rac->middle;
 					l->father = (struct Node*)rac;
 					l->level = rac->level;
 					l->indic = rac->indic;
+					((Node*)l->left)->father = (struct Node*)l;
+					((Node*)l->middle)->father = (struct Node*)l;
 
 					m->isLeaf = 0;
 					m->value1 = ((Node*)rac->right)->value2;
-					m->value2 = -1;
 					m->left = rac->right;
 					m->middle = (struct Node*)gc;
 					m->father = (struct Node*)rac;
 					m->level = rac->level;
 					m->indic = (rac->indic)+1;
+					((Node*)m->left)->father = (struct Node*)m;
+					((Node*)m->middle)->father = (struct Node*)m;
 
 					((Node*)rac->right)->value2 = -1;
+					((Node*)rac->right)->s3 = -1;
 
 					rac->isLeaf = 0;
 					rac->value1 = rac->value2;
@@ -293,6 +219,7 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 					rac->right = NULL;
 					rac->level = (rac->level)+1;
 					rac->indic = 0;
+					rac->s3 = -1;
 
 				} else {
 					return 1;
@@ -303,6 +230,157 @@ int insertBulkData(int opt, short i, Node *rac, char* file){
 	return 0;
 }
 
-void loadInMemory(Node *rac, char* name){}
+void ecrire_node(Node* node){
+	FILE* file = NULL;
+	char* file_name = malloc(sizeof(char)*20);
+	sprintf(file_name,"../data/tree/%d_%d", node->level, node->indic);
+	file = fopen(file_name, "w+");
+	if(file != NULL){
+		if(node->father != NULL){
+			fprintf(file, "%d_%d\n", ((Node*)node->father)->level, ((Node*)node->father)->indic);
+		}else{
+			fprintf(file, "Null\n");
+		}
+		fprintf(file, "%d\n", node->value1);
+		fprintf(file, "%d\n", node->value2);
+		fprintf(file, "%d\n", node->isLeaf);
+		if(node->left != NULL){
+			fprintf(file, "%d_%d\n", ((Node*)node->left)->level, ((Node*)node->left)->indic);
+		}else{
+			fprintf(file, "Null\n");
+		}
+		if(node->middle != NULL){
+			fprintf(file, "%d_%d\n", ((Node*)node->middle)->level, ((Node*)node->middle)->indic);
+		}else{
+			fprintf(file, "Null\n");
+		}
+		if(node->right != NULL){
+			fprintf(file, "%d_%d\n", ((Node*)node->right)->level, ((Node*)node->right)->indic);
+		}else{
+			fprintf(file, "Null\n");
+		}
+		fclose(file);
+	}
+}
 
-void storeToDisk(Node *rac, char* name){}
+void ecrire_leaf(Node* node){
+	FILE* file = NULL;
+	char* file_name = malloc(sizeof(char)*20);
+	sprintf(file_name,"../data/tree/%d_%d", node->level, node->indic);
+	file = fopen(file_name, "w+");
+	if(file != NULL){
+		if(node->father != NULL){
+			fprintf(file, "%d_%d\n", ((Node*)node->father)->level, ((Node*)node->father)->indic);
+		}else{
+			fprintf(file, "Null\n");
+		}
+		fprintf(file, "%d\n", node->value1);
+		fprintf(file, "%d\n", node->value2);
+		fprintf(file, "%d\n", node->isLeaf);
+		if(node->s1 != -1){
+			fprintf(file, "%d.txt\n", node->s1);
+		}else{
+			fprintf(file, "-1\n");
+		}
+		if(node->s2 != -1){
+			fprintf(file, "%d.txt\n", node->s2);
+		}else{
+			fprintf(file, "-1\n");
+		}
+		if(node->s3 != -1){
+			fprintf(file, "%d.txt\n", node->s3);
+		}else{
+			fprintf(file, "-1\n");
+		}
+	}
+	fclose(file);
+}
+char* getRac(char* name, char* nameFile){
+	nameFile = concateneNameFile(name, nameFile, -1);
+	FILE* file = fopen(nameFile, "r");
+	if (file != NULL) {
+		char * line = NULL;
+		size_t len = 0;
+		getline(&line, &len, file);
+		if(strcmp(line,"Null")==0){
+			return nameFile;
+		}else{
+			getRac(name, line);
+		}
+	}
+	return nameFile;
+}
+Node* lire(Node* rac, char* name){
+	Node* n = malloc(sizeof(Node));
+	FILE* file = fopen(name, "r");
+	if (file != NULL) {
+		char * line = NULL;
+		size_t len = 0;
+		getline(&line, &len, file);
+		if(rac != NULL){
+			n->father = ((struct Node*)rac);
+		}else{
+			n->father = NULL;
+		}
+		getline(&line, &len, file);
+		n->value1 = atoi(line);
+		getline(&line, &len, file);
+		n->value2 = atoi(line);
+		getline(&line, &len, file);
+		n->isLeaf = atoi(line);
+		if(n->isLeaf == 1){
+			getline(&line, &len, file);
+			n->s1 = atoi(line);
+			getline(&line, &len, file);
+			n->s2 = atoi(line);
+			getline(&line, &len, file);
+			n->s3 = atoi(line);
+		}else{
+			getline(&line, &len, file);
+			if(strcmp(line,"Null")){
+				n->left = NULL;
+			}else{
+				n->left = (struct Node*)lire(n,line);
+			}
+			getline(&line, &len, file);
+			if(strcmp(line,"Null")){
+				n->middle = NULL;
+			}else{
+				n->middle = (struct Node*)lire(n,line);
+			}
+			getline(&line, &len, file);
+			if(strcmp(line,"Null")){
+				n->right = NULL;
+			}else{
+				n->right = (struct Node*)lire(n,line);
+			}
+		}
+		fclose(file);
+	}
+	return n;
+}
+
+Node* loadInMemory(Node *rac, char* name){
+	getRac(name, "0_0");
+	Node* n = NULL;
+	init(&n);
+	n = lire(n, name);
+	return n;
+}
+
+void storeToDisk(Node *rac, char* name){
+	if(rac->isLeaf == 1){
+		ecrire_leaf(rac);
+	}else{
+		ecrire_node(rac);
+		if(rac->left != NULL){
+			storeToDisk((Node *)(rac->left), name);
+		}
+		if(rac->middle != NULL){
+			storeToDisk((Node *)(rac->middle), name);
+		}
+		if(rac->right != NULL){
+			storeToDisk((Node *)(rac->right), name);
+		}
+	}
+}

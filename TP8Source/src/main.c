@@ -19,7 +19,13 @@ samuel.elbe@gmail.com
 #include "LibBT.h"
 
 int main(int argc, char const *argv[]) {
-	create(1, "../data/S");
+	Node* n = NULL;
+	n = create(n, 1, "../data/S");
+	mkdir("../data/tree", S_IRWXU | S_IXGRP | S_IRGRP | S_IXOTH | S_IROTH);
+	storeToDisk(n, "../data/tree");
+	Node* n2 = NULL;
+	n2 = loadInMemory(n2, "../data/tree");
+	display(n2, 0);
 	return EXIT_SUCCESS;
-	
+
 }

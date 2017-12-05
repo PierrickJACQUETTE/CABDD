@@ -12,7 +12,8 @@ TP8: $(OBJECTS)
 %.o: %.c $(HEADERS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-run: ./TP8
+run: 
+	./TP8
 
 clean:
 	rm -f *.o
