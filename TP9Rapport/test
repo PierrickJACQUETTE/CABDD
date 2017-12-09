@@ -1,0 +1,12 @@
+﻿SELECT 
+  country.name, 
+  city.name, 
+  countrylanguage.language
+FROM 
+  public.country, 
+  public.city, 
+  public.countrylanguage
+WHERE 
+  city.countrycode = country.code AND
+  countrylanguage.countrycode = country.code AND
+  city.name != 'Kabul';
